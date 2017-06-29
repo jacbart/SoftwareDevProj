@@ -91,10 +91,31 @@
         <p id="beginner">
         list of Links to add to the database and connect to the webpage
             <ul>
-                <li> <a href="https://www.programiz.com/python-programming">https://www.programiz.com/python-programming</a></li>
+                
+                <?php
+                      //this should connect to heroku sql
+                      $connect = mysqli_connect(localhost,root,Pe0pleLikeGrapes, ThatCSGuide);
+                      if(!connect){
+                        die(mysqli_error($connect).' because'.mysqli_errno($connect));
+                      }
+                      
+                      $query = "select * from resources;";
+                      
+                      $result = mysqli_query($connect, $query);
+                      
+                      while ($row = mysqli_fetch_array($result,MYSQLI_NUM)){
+                            if($row[topic_id] == 1){
+                                echo $row['resource'] . "<br />";
+                                echo $row['title'] . "<br ?>";
+                            }
+
+                      }
+                      
+                ?>
+                <!--<li> <a href="https://www.programiz.com/python-programming">https://www.programiz.com/python-programming</a></li>
                 <li> <a href="http://www.afterhoursprogramming.com/tutorial/Python/Introduction/">http://www.afterhoursprogramming.com/tutorial/Python/Introduction/</a></li>
                 <li> <a href="https://cscircles.cemc.uwaterloo.ca/">https://cscircles.cemc.uwaterloo.ca/</a></li>
-                <li> <a href="https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz">https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz</a></li>
+                <li> <a href="https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz">https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz</a></li>-->
             </ul>
         Potentially, these might be more of an embedded format as opposed to direct links.
         </p>
