@@ -7,7 +7,16 @@
 
 <?php 
 
-echo $_POST['userName'];
+echo $_POST['username'];
+
+if (!$_POST['username']){
+    echo $_POST['username'];
+    echo '<br>';
+    die('Username not input correctly.<br/>
+    <a href="login.html"> Click</a> to try again');
+
+    // header("Location: login.html");
+}
 
 
 // Connects to your Database 
@@ -17,27 +26,36 @@ if (!connection){
     die(mysqli_error($connection).' because'.mysqli_errno($connection));
 } 
 
-$query = 'select * from users';
+$query = "select name from users WHERE name = '".$_POST['username']."';";
 $result = mysqli_query($connection,$query);
-
 
 if(!$result){
     die('Could query data: '.mysqli_error($connection).' because '.mysqli_errno($connection));
 }
 
-echo $query."<br>";
-
-while ($row = mysqli_fetch_array($result, MYSQLI_NUM)){
+while ($row = mysqli_fetch_array($result,MYSQLI_NUM)){
     echo $row[0];
-    echo $row[1];
-    echo "<br>";
 }
 
+$userCheck = mysqli_num_rows($result);
 
+if ($userCheck == 0){    // they don't have an accout, do something
+    die('The username <b>'.$_POST['username'].'</b> does not exist in our database.
+        <br/>
+        <br/>
+        If you think this is wrong <a href="login.html">try again</a>.
+        <br/>
+        <br/>
+        Or <a href="SQLCreateAccount.php"> Click to create an account</a>');
+}
 
-
-
-
+// while($info = mysqli_fetch_array($check)){
+    echo "Successfully logged in!<br/>";
+    $_POST['username'] = stripslashes($_POST['username']);
+    // setcookie("ThatCSGuide", $_POST['username'], false); //I have no idea what this does
+    echo '<a href="index.html"> Click here to continue!</a>';
+    // header("Location: index.html");
+// }
 
 
 
