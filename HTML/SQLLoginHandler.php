@@ -5,6 +5,8 @@
 </head>
 <body>
 
+<!-- credit: https://github.com/Goatella/Simple-PHP-Login -->
+
 <?php 
 
 echo $_POST['username'];
@@ -14,47 +16,48 @@ if (!$_POST['username']){
     echo '<br>';
     die('Username not input correctly.<br/>
     <a href="login.html"> Click</a> to try again');
-
-    // header("Location: login.html");
+    #########automatically redirect to proper page
+    //header("Location: login.html");
 }
 
 
 // Connects to your Database 
 $connection = mysqli_connect("localhost","root","Badbugga1!", "ThatCSGuide");
-
 if (!connection){
     die(mysqli_error($connection).' because'.mysqli_errno($connection));
 } 
 
 $query = "select name from users WHERE name = '".$_POST['username']."';";
 $result = mysqli_query($connection,$query);
-
 if(!$result){
     die('Could query data: '.mysqli_error($connection).' because '.mysqli_errno($connection));
 }
 
-while ($row = mysqli_fetch_array($result,MYSQLI_NUM)){
-    echo $row[0];
-}
+
+// while ($row = mysqli_fetch_array($result,MYSQLI_NUM)){
+//     echo $row[0];
+// }
 
 $userCheck = mysqli_num_rows($result);
 
-if ($userCheck == 0){    // they don't have an accout, do something
+if ($userCheck == 0){    //####################### redirect to proper page
     die('The username <b>'.$_POST['username'].'</b> does not exist in our database.
         <br/>
         <br/>
         If you think this is wrong <a href="login.html">try again</a>.
         <br/>
         <br/>
-        Or <a href="SQLCreateAccount.php"> Click to create an account</a>');
+        Or <a href="SQLCreateAccount.php"> Click to create an account</a> <b>need to update link</b>');
 }
 
 // while($info = mysqli_fetch_array($check)){
     echo "Successfully logged in!<br/>";
     $_POST['username'] = stripslashes($_POST['username']);
-    // setcookie("ThatCSGuide", $_POST['username'], false); //I have no idea what this does
-    echo '<a href="index.html"> Click here to continue!</a>';
-    // header("Location: index.html");
+    echo '<a href="trial.php"> Click here to continue!</a><b>make what happens here cleaner</b>';
+    setcookie("ThatCSGuide", $_POST['username'], false); //I have no idea what this does
+    ################################
+    //todo: set this to a proper location
+    header("Location: trial.php"); 
 // }
 
 
