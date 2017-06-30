@@ -105,12 +105,11 @@
                       
                       while ($row = mysqli_fetch_array($result)){
                             if($row['topic_id'] == 1){
-                                echo "<tr>"
-                                echo"<tr>"
+                                echo "<tr>";
                                 echo "<td>" . $row['resource'] . "</td>";
                                 echo "<td>"$row['title'] . "</td>";
-                                
-                            }
+                                echo "</tr>";
+                                }
 
                       }
                 mysqli_close($connect);
