@@ -103,14 +103,17 @@
                       
                       $result = mysqli_query($connect, $query);
                       
-                      while ($row = mysqli_fetch_array($result,MYSQLI_NUM)){
-                            if($row[topic_id] == 1){
-                                echo $row['resource'] . <br>;
-                                echo $row['title'] . <br>;
-                                console.log("The $row title value is: " $row['title']);
+                      while ($row = mysqli_fetch_array($result)){
+                            if($row['topic_id'] == 1){
+                                echo "<tr>"
+                                echo"<tr>"
+                                echo "<td>" . $row['resource'] . "</td>";
+                                echo "<td>"$row['title'] . "</td>";
+                                
                             }
 
                       }
+                mysqli_close($connect);
                       
                 ?>
                 <!--<li> <a href="https://www.programiz.com/python-programming">https://www.programiz.com/python-programming</a></li>
