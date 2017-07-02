@@ -26,12 +26,16 @@ else{
         <button type="button" class="btn btn-default pull-right" 
         aria-haspopup="true" aria-expanded="false">
             Log In
-        </button>';
+        </a></button>';
 }
 
-?>
+echo '<a href="index.html">
+        <button type="button" class="btn btn-default pull-right" 
+        aria-haspopup="true" aria-expanded="false">
+            index
+        </a></button>';
 
-<?php
+
 
 echo $_COOKIE['ThatCSGuide']
 
