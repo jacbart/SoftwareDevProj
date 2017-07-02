@@ -9,7 +9,6 @@
 
 <?php 
 
-echo $_POST['username'];
 
 if (!$_POST['username']){
     echo $_POST['username'];

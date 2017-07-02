@@ -4,10 +4,14 @@ $(document).ready(function(){ //this is breaking the code and IDK why =(
         if (document.cookie.indexOf("ThatCSGuide") != 0){ //go to the login screen if no user cookie
             window.location.href ="login.html";
         }
+        else{
+            //logout.php
+        }
     };
 });
 
-function getCookie(cname){ //https://www.w3schools.com/js/js_cookies.asp
+//magic code pulled from https://www.w3schools.com/js/js_cookies.asp
+function getCookie(cname){ 
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');

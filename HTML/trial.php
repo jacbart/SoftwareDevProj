@@ -14,12 +14,6 @@ if (isset($_COOKIE['ThatCSGuide'])){
         aria-haspopup="true" aria-expanded="false">
             Log Out
         </a></button>';
-    echo '<br><br>
-    <a href="../JS/hello.html">
-    <button type="button" class="btn btn-default pull-right" 
-    aria-haspopup="true" aria-expanded="false">
-        this sucks
-    </a></button>';
 }
 else{
     echo '<a href="login.html">
