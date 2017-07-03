@@ -51,9 +51,9 @@ function globalNavbar(){
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="Python.html">Python</a></li>
+                            <li><a href="Python.php">Python</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">C++</a></li>
+                            <li><a href="cplusplus.html">C++</a></li>
                             <li class="divider"></li>
                             <li><a href="CheatSheets.html">Cheat Sheets</a></li>
                         </ul>
