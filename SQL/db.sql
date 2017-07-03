@@ -31,10 +31,10 @@ create table `resources` (
 	`id` int(1) not null AUTO_INCREMENT primary key, 
 	`title` varchar(40) not null default '',
 	`resource` varchar(200) not null default '',
-	`visit` int,
+	`visit` int(1) default 0,
 	`topic_id` int, foreign key (`topic_id`) references `topics`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=4;
-insert into `resources` (`id`, `title`, `resource`, `topic_id`) values
+insert into `resources` (`id`, `title`, `resource`, `visit`, `topic_id`) values
 	(1, 'ultimate python guide', 'https://www.google.com/search?q=pyhone&oq=pyhone&aqs=chrome..69i57j0l5.3420j0j7&sourceid=chrome&ie=UTF-8#q=python', 0, 1),
 	(2, 'ultimate cpp guide', 'https://www.google.com/search?q=pyhone&oq=pyhone&aqs=chrome..69i57j0l5.3420j0j7&sourceid=chrome&ie=UTF-8#q=c%2B%2B', 0, 2),
 	(3, 'google', 'https://support.google.com/websearch/answer/134479?hl=en', 0, 3);
