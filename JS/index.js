@@ -5,7 +5,7 @@ $(document).ready(function(){ //this is breaking the code and IDK why =(
             window.location.href ="login.html";
         }
         else{
-            //logout.php
+            window.location.href="logout.php"
         }
     };
 });
@@ -29,7 +29,7 @@ function getCookie(cname){
 
 function loginButton(){
     if (document.cookie.indexOf("ThatCSGuide") == 0){ //check if a cookie has been set
-        var output = 'Welcome ' + getCookie('ThatCSGuide'); //format the string nicely
+        var output = 'Welcome ' + getCookie('ThatCSGuide') + ': Click to logout'; //format the string nicely
         document.getElementById("loginButton").innerHTML = output// code to display name in button
     }
 }
