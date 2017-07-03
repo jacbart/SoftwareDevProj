@@ -94,9 +94,9 @@
             <ul>
                 
                 <?php
-                      $connect = mysqli_connect('localhost', 'root', 'Pe0pleLikeGrapes', 'ThatCSGuide');
+                      $connect = mysqli_connect("localhost", "root", "Pe0pleLikeGrapes", "ThatCSGuide");
                       //this should connect to heroku sql
-                      if(!connect){
+                      if(!$connect){
                         die(mysqli_error($connect).'because'.mysqli_errno($connect));
                       }
                       
