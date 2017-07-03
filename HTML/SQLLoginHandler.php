@@ -23,12 +23,12 @@ if (!$_POST['username']){
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $server = $url["host"];
-$username = $url["user"];
+$username2 = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 //connect to database
-$connection = mysqli_connect($server,$username,$password,$db);
+$connection = mysqli_connect($server,$username2,$password,$db);
 
 //check connection
 if (!$connection) {
