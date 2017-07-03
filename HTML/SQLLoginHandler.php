@@ -9,8 +9,6 @@
 
 <?php 
 
-echo $_POST['username'];
-
 if (!$_POST['username']){
     echo $_POST['username'];
     echo '<br>';
@@ -23,18 +21,18 @@ if (!$_POST['username']){
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $server = $url["host"];
-$username2 = $url["user"];
+$username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 
-//connect to database
-$connection = mysqli_connect($server,$username2,$password,$db);
-
-//check connection
+// Connects to your Database 
+$connection = mysqli_connect($server,$username,$password,$db);
+// $connection = mysqli_connect("localhost","root","1080", "ThatCSGuide");
 if (!$connection) {
-    echo "<h4>Failed to connect to connect to MySQL: ".mysqli_connect_error();
+    echo "<h4>Failed to connect to MySQL: ".mysqli_connect_error();
     die();
 }
+
 
 $query = "select name from users WHERE name = '".$_POST['username']."';";
 $result = mysqli_query($connection,$query);
@@ -51,8 +49,7 @@ if ($userCheck == 0){    //####################### redirect to proper page
         If you think this is wrong <a href="login.html">try again</a>.
         <br/>
         <br/>
-        Or <a href="SQLCreateAccount.php"> Click to create an account</a>
-        <b>need to update link</b>');
+        Or <a href="createuser.html"> Click to create an account</a>');
 }
 
 // while($info = mysqli_fetch_array($check)){
