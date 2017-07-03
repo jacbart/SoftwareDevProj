@@ -7,12 +7,14 @@ drop table if exists `users`;
 create table `users` (
 	`id` int(1) not null AUTO_INCREMENT primary key,
 	`name` varchar(20) not null default ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=5;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=7;
 insert into `users` (`id`, `name`) values
 	(1, 'admin'),
-	(2, 'user1'),
-	(3, 'user2'),
-	(4, 'user3');
+	(2, 'jack'),
+	(3, 'holden'),
+	(4, 'matt'),
+	(5, 'elijah'),
+	(6, 'cash');
 
 drop table if exists `topics`;
 create table `topics` (
