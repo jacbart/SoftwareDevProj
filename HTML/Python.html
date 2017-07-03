@@ -94,8 +94,7 @@
             <ul>
                 
                 <?php
-                      //this should connect to heroku sql
-                      $connect = mysqli_connect(localhost,root,Pe0pleLikeGrapes, ThatCSGuide);
+                      $connect = mysqli_connect('localhost', 'root', 'Pe0pleLikeGrapes', 'ThatCSGuide');
                       if(!connect){
                         die(mysqli_error($connect).' because'.mysqli_errno($connect));
                       }
@@ -106,9 +105,9 @@
                       
                       while ($row = mysqli_fetch_array($result)){
                             if($row['topic_id'] == 1){
-                                echo "<tr>";
-                                echo "<td>" . $row['resource'] . "</td>";
-                                echo "<td>"$row['title'] . "</td>";
+                                echo "<tr>;";
+                                echo "<td>".$row['resource']."</td>";
+                                echo "<td>"$row['title']."</td>";
                                 echo "</tr>";
                                 }
 
