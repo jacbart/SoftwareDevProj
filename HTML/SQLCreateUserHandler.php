@@ -2,8 +2,15 @@
 <head><title>CreateUserHandler</title></head>
 <body>
 <?php
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+
 //connect to database
-$connection = mysqli_connect("localhost","root","passwordhere","ThatCSGuide");
+$connection = mysqli_connect($server,$username,$password,$db);
 
 //check connection
 if (!$connection) {

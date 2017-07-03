@@ -20,12 +20,21 @@ if (!$_POST['username']){
     //header("Location: login.html");
 }
 
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-// Connects to your Database 
-$connection = mysqli_connect("localhost","root","Badbugga1!", "ThatCSGuide");
-if (!connection){
-    die(mysqli_error($connection).' because'.mysqli_errno($connection));
-} 
+$server = $url["host"];
+$username2 = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+
+//connect to database
+$connection = mysqli_connect($server,$username2,$password,$db);
+
+//check connection
+if (!$connection) {
+    echo "<h4>Failed to connect to connect to MySQL: ".mysqli_connect_error();
+    die();
+}
 
 $query = "select name from users WHERE name = '".$_POST['username']."';";
 $result = mysqli_query($connection,$query);
