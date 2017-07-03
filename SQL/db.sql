@@ -1,6 +1,6 @@
-drop schema if exists ThatCSGuide;
-create schema ThatCSGuide;
-use ThatCSGuide;
+drop schema if exists heroku_418f9cc765f4922;
+create schema heroku_418f9cc765f4922;
+use heroku_418f9cc765f4922;
 set autocommit=0;
 
 drop table if exists `users`;
