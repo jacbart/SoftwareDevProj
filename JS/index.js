@@ -1,4 +1,5 @@
 $(document).ready(function(){ //this is breaking the code and IDK why =(
+    globalNavbar();
     loginButton();
     document.getElementById("loginButton").onclick = function(){ //when the button is pressed
         if (document.cookie.indexOf("ThatCSGuide") != 0){ //go to the login screen if no user cookie
@@ -32,6 +33,43 @@ function loginButton(){
         var output = 'Welcome ' + getCookie('ThatCSGuide') + ': Click to logout'; //format the string nicely
         document.getElementById("loginButton").innerHTML = output// code to display name in button
     }
+}
+
+function globalNavbar(){
+    var bar = `<div class="row">
+        <nav class="navbar navbar-inverse navbar-static-top"
+             style="padding-top:0.5em; padding-top:0.5em;">
+            <div class="container-fluid">
+                <div class="btn-group" role="group">
+                    <a href="index.html">
+                        <button type="button" class="btn btn-primary pull-left">THAT CS GUIDE
+                        </button>
+                    </a>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Topics
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="Python.html">Python</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">C++</a></li>
+                            <li class="divider"></li>
+                            <li><a href="CheatSheets.html">Cheat Sheets</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" 
+                    class="btn btn-default pull-right" 
+                    aria-haspopup="true" 
+                    aria-expanded="false" 
+                    id="loginButton">
+                    Log In
+                </button>
+            </div>
+        </nav>
+    </div>`;
+    $('body').prepend(bar);
 }
 
 // function checkCookie(name) { //https://www.w3schools.com/js/js_cookies.asp
