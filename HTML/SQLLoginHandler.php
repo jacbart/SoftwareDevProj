@@ -27,9 +27,9 @@ $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 //connect to database
-$connection = mysqli_connect($server,$username,$password,$db);
+// $connection = mysqli_connect($server,$username,$password,$db);
 // Connects to your Database 
-// $connection = mysqli_connect("localhost","root","Badbugga1!", "ThatCSGuide");
+$connection = mysqli_connect("localhost","root","Badbugga1!", "ThatCSGuide");
 if (!connection){
     die(mysqli_error($connection).' because'.mysqli_errno($connection));
 } 
