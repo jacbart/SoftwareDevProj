@@ -10,8 +10,8 @@ $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 //connect to database
-// $connection = mysqli_connect($server,$username,$password,$db); 
-$connection = mysqli_connect("localhost","root","Badbugga1!", "ThatCSGuide");
+$connection = mysqli_connect($server,$username,$password,$db); 
+// $connection = mysqli_connect("localhost","root","Badbugga1!", "ThatCSGuide");
 
 //check connection
 if (!$connection) {

@@ -92,33 +92,38 @@
         list of Links to add to the database and connect to the webpage
         </p>
             <ul>
-                
                 <?php
-                      $connect = mysqli_connect("localhost", "root", "Pe0pleLikeGrapes", "ThatCSGuide");
-                      //this should connect to heroku sql
-                      if(!$connect){
-                        die(mysqli_error($connect).'because'.mysqli_errno($connect));
-                      }
-                      
-                      $query = "select * from resources;";
-                      
-                      $result = mysqli_query($connect, $query);
+                    url = parse_url(getenv("CLEARDB_DATABASE_URL"));//heroku database things
 
-                      if(!$result){
+                    $server = $url["host"];
+                    $username = $url["user"];
+                    $password = $url["pass"];
+                    $db = substr($url["path"], 1);
+
+                    // Connects to your Database 
+                    //this should connect to heroku sql
+                    $connection = mysqli_connect($server,$username2,$password,$db);
+                    if(!$connect){
+                    die(mysqli_error($connect).'because'.mysqli_errno($connect));
+                    }
+
+                    $query = "select * from resources;";
+                    $result = mysqli_query($connect, $query);
+                    if(!$result){
                         die('Could query data: '.mysqli_error($connection).' because '.mysqli_errno($connection));
                     }
-                      
-                      while ($row = mysqli_fetch_array($result)){
-                            if($row['topic_id'] == 1){
-                                echo "<tr>
-                                        <td>".$row[2]."</td>
-                                        <td><a href=".$row[3]."> Link</a></td>
-                                </tr>";
-                                }
-                      }
+
+                    while ($row = mysqli_fetch_array($result)){
+                        if($row['topic_id'] == 1){
+                            echo "<tr>
+                                <td>".$row[2]."</td>
+                                <td><a href=".$row[3]."> Link</a></td>
+                            </tr>";
+                        }
+                    }
                 mysqli_close($connect);
-                      
                 ?>
+                <!-- do we still need this stuff? -->
                 <!--<li> <a href="https://www.programiz.com/python-programming">https://www.programiz.com/python-programming</a></li>
                 <li> <a href="http://www.afterhoursprogramming.com/tutorial/Python/Introduction/">http://www.afterhoursprogramming.com/tutorial/Python/Introduction/</a></li>
                 <li> <a href="https://cscircles.cemc.uwaterloo.ca/">https://cscircles.cemc.uwaterloo.ca/</a></li>
