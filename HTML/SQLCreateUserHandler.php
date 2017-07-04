@@ -1,6 +1,3 @@
-<html>
-<head><title>CreateUserHandler</title></head>
-<body>
 <?php
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -12,9 +9,10 @@ $db = substr($url["path"], 1);
 //connect to database
 $connection = mysqli_connect($server,$username,$password,$db);
 
+
 //check connection
 if (!$connection) {
-	echo "<h4>Failed to connect to connect to MySQL: ".mysqli_connect_error();
+	echo "<h4>Failed to connect to connect to MySQL: ".mysqli_connect_error()."</h4>";
 	die();
 }
 
@@ -33,7 +31,6 @@ $namecheckquery = mysqli_query($connection, "select name from users where name =
 $namecheck = mysqli_num_rows($namecheckquery);
 if ($namecheck) {
 	echo "<p>Username taken</p>";
-	echo "<a href=\"/HTML/createuser.html\">Back to create user</a>";
 }
 else {
 	$insertquery = "insert into users (id, name)
@@ -44,7 +41,4 @@ else {
 	echo "<a href=\"/HTML/login.html\">Back to login page.</a>";
 }
 
-//include 'createuser.html';
 ?>
-</body>
-</html>
