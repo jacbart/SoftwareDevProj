@@ -64,7 +64,7 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu">
-							<li><a href="Python.html">Python</a></li>
+							<li><a href="Python.php">Python</a></li>
 							<li class="divider"></li>
 							<li><a href="#">C++</a></li>
 							<li class="divider"></li>
@@ -72,13 +72,11 @@
 						</ul>
 					</div>
 				</div>
-                <button type="button" 
-                    class="btn btn-default pull-right" 
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    id="loginButton">
-                    Log In
-                </button>
+				<a href="login.html">
+					<button type="button" class="btn btn-default pull-right" aria-haspopup="true" aria-expanded="false">
+						Log In
+					</button>
+				</a>
 			</div>
 		</nav>
 	</div>
@@ -92,12 +90,46 @@
 
         <p id="beginner">
         list of Links to add to the database and connect to the webpage
+        </p>
             <ul>
-                <li> <a href="https://www.programiz.com/python-programming">https://www.programiz.com/python-programming</a></li>
+                <?php
+                    url = parse_url(getenv("CLEARDB_DATABASE_URL"));//heroku database things
+
+                    $server = $url["host"];
+                    $username = $url["user"];
+                    $password = $url["pass"];
+                    $db = substr($url["path"], 1);
+
+                    // Connects to your Database 
+                    //this should connect to heroku sql
+                    $connection = mysqli_connect($server,$username2,$password,$db);
+                    if(!$connect){
+                    die(mysqli_error($connect).'because'.mysqli_errno($connect));
+                    }
+
+                    $query = "select * from resources;";
+                    $result = mysqli_query($connect, $query);
+                    if(!$result){
+                        die('Could query data: '.mysqli_error($connection).' because '.mysqli_errno($connection));
+                    }
+
+                    while ($row = mysqli_fetch_array($result)){
+                        if($row['topic_id'] == 1){
+                            echo "<tr>
+                                <td>".$row[2]."</td>
+                                <td><a href=".$row[3]."> Link</a></td>
+                            </tr>";
+                        }
+                    }
+                mysqli_close($connect);
+                ?>
+                <!-- do we still need this stuff? -->
+                <!--<li> <a href="https://www.programiz.com/python-programming">https://www.programiz.com/python-programming</a></li>
                 <li> <a href="http://www.afterhoursprogramming.com/tutorial/Python/Introduction/">http://www.afterhoursprogramming.com/tutorial/Python/Introduction/</a></li>
                 <li> <a href="https://cscircles.cemc.uwaterloo.ca/">https://cscircles.cemc.uwaterloo.ca/</a></li>
-                <li> <a href="https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz">https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz</a></li>
+                <li> <a href="https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz">https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz</a></li>-->
             </ul>
+        <p>
         Potentially, these might be more of an embedded format as opposed to direct links.
         </p>
     
