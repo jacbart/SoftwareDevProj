@@ -17,7 +17,6 @@ if(!$connect)
 
 // Gets topic id
 $topicid = $_REQUEST['topicid'];
-// $topicid = (int)$topicid;
 $topicQuery = "select * from topics where id=".$topicid.";";
 $topicResult = mysqli_query($connect, $topicQuery);
 if(!$topicResult)
@@ -79,12 +78,12 @@ if(!$topicResult)
         <div class="jumbotron col-md-8 col-md-offset-2">
             <h1>
                 <font color="#24478f">
-                    <?php echo ".$topicResult[1]."?>
+                    <?php echo $topicResult[1]?>
                 </font>
             </h1>
             <p>
                 <font color="#24478f">
-                    <?php echo ".$topicResult[2]."?>
+                    <?php echo $topicResult[2]?>
                 </font>
             </p>
             <div class="list-group">
@@ -98,7 +97,7 @@ if(!$topicResult)
                       
                     while ($row = mysqli_fetch_array($result))
                     {
-                        if($row['topic_id'] == $topicid)
+                        if($row['topic_id'] == $topicResult[0])
                         {
                             echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
                             class='list-group-item'>".$row[1]."</a>";
