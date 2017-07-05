@@ -46,44 +46,47 @@
 			src="../JS/index.js">
 	</script>
 </head>
-
 <?php
+//heroku database things
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+
+// Connects to your Database 
+//this should connect to heroku sql
+$connect = mysqli_connect($server,$username,$password,$db);
+if(!$connect)
+{
+	die(mysqli_error($connect).'because'.mysqli_errno($connect));
+}
+
+// Gets topic id
+$topicid = $_REQUEST['topicid'];
+$topicQuery = "select * from topics where id=".$topicid.";";
+$topicResult = mysqli_query($connect, $topicQuery);
+if(!$topicResult)
+{
+    die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
+}
 ?>
 <body>
     <div class="row">
         <div class="jumbotron col-md-8 col-md-offset-2">
             <h1>
                 <font color="#24478f">
-                    <?php echo 
+                    <?php echo ".$topicResult[1]."?>
                 </font>
             </h1>
             <p>
                 <font color="#24478f">
-                    Python is a programming language that is loved by many in the computer science community. It processes code incredibly fast debuggin the programs are easy, seeing as bugs or poor inputs won't cause code to segmentation fault. Below are a few guides to help you get started with programming in python.
+                    <?php echo ".$topicResult[2]."?>
                 </font>
             </p>
             <div class="list-group">
                 <?php
-
-                    //$connect = mysqli_connect("localhost", "root", "***", "heroku_418f9cc765f4922");
-                    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-                    //heroku database things
-
-                    $server = $url["host"];
-                    $username = $url["user"];
-                    $password = $url["pass"];
-                    $db = substr($url["path"], 1);
-
-                    // Connects to your Database 
-                    //this should connect to heroku sql
-                    $connect = mysqli_connect($server,$username,$password,$db);
-                    if(!$connect)
-                    {
-                        die(mysqli_error($connect).'because'.mysqli_errno($connect));
-                    }
-
                     $query = "select * from resources;";
                     $result = mysqli_query($connect, $query);
                     if(!$result)
@@ -95,7 +98,8 @@
                     {
                         if($row['topic_id'] == 1)
                         {
-                            echo "<a href=".$row[2]." class="list-group-item"><font>".$row[1]."</font></a>";
+                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
+                            class='list-group-item'>".$row[1]."</a>";
                         }
                     }
                     mysqli_close($connect);
