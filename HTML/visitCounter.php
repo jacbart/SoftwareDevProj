@@ -30,11 +30,11 @@
 	{
 		if($row['resource'] == $urllink)
 		{
-			$currentVisit = row['visit'];
+			$currentVisit = $row['visit'];
 			$newVisit = $currentVisit+1;
 			$updateVisit = "update resources set visit=".$newVisit." where resource=".$urllink.";";
 			mysqli_query($connect, $updateVisit);
-			echo "<a href=".$row[2]." target='_blank'></a>";
+			// echo "<a href=".$row[2]." target='_blank'></a>";
 		}
 	}
 	mysqli_close($connect);
