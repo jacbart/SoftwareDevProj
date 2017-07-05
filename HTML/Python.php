@@ -73,7 +73,7 @@
 
                     // Connects to your Database 
                     //this should connect to heroku sql
-                    $connect = mysqli_connect($server,$username2,$password,$db);
+                    $connect = mysqli_connect($server,$username,$password,$db);
                     if(!$connect){
                     die(mysqli_error($connect).'because'.mysqli_errno($connect));
                     }
@@ -92,15 +92,6 @@
                                 </li></tr>";
                                 }
                       }
-
-                    while ($row = mysqli_fetch_array($result)){
-                        if($row['topic_id'] == 1){
-                            echo "<tr>
-                                <td>".$row[2]."</td>
-                                <td><a href=".$row[3]."> Link</a></td>
-                            </tr>";
-                        }
-                    }
                 mysqli_close($connect);
                 ?>
                 <!-- do we still need this stuff? -->
