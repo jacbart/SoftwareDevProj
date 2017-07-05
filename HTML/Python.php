@@ -47,39 +47,7 @@
 	</script>
 </head>
 
-<body>
-	<div class="row">
-		<nav class="navbar navbar-inverse navbar-static-top"
-			 style="padding-top:0.5em; padding-top:0.5em">
-			<div class="container-fluid">
-				<div class="btn-group" role="group">
-					<a href="index.html">
-						<button type="button" class="btn btn-default pull-left">
-							Home
-						</button>
-					</a>
-					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Topics
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu">
-							<li><a href="Python.php">Python</a></li>
-							<li class="divider"></li>
-							<li><a href="#">C++</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Cheat Sheets</a></li>
-						</ul>
-					</div>
-				</div>
-				<a href="login.html">
-					<button type="button" class="btn btn-default pull-right" aria-haspopup="true" aria-expanded="false">
-						Log In
-					</button>
-				</a>
-			</div>
-		</nav>
-	</div>
+<body>`
     <div class="content">
         <div class="info">
             <h1 id="title">Python</h1>
@@ -94,10 +62,17 @@
             <ul>
                 
                 <?php
-                      $connect = mysqli_connect("localhost", "root", "Pe0pleLikeGrapes", "ThatCSGuide");
+                      //$connect = mysqli_connect("localhost", "root", "Pe0pleLikeGrapes", "heroku_418f9cc765f4922");
+		      $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+		      $server = $url["host"];
+		      $username = $url["user"];
+		      $password = $url["pass"];
+
+		      $mysqli_connect($server,$username,$password,$db);
                       //this should connect to heroku sql
                       if(!$connect){
-                        die(mysqli_error($connect).'because'.mysqli_errno($connect));
+                        die('Connection error: '.mysqli_error($connect).'because'.mysqli_errno($connect));
                       }
                       
                       $query = "select * from resources;";
@@ -110,10 +85,10 @@
                       
                       while ($row = mysqli_fetch_array($result)){
                             if($row['topic_id'] == 1){
-                                echo "<tr>
-                                        <td>".$row[2]."</td>
-                                        <td><a href=".$row[3]."> Link</a></td>
-                                </tr>";
+                                echo "<tr><li>
+                                        <td>".$row[1]."</td>
+                                        <td><a href=".$row[2]."> Link</a></td>
+                                </li></tr>";
                                 }
                       }
                 mysqli_close($connect);
