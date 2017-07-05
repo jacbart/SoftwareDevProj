@@ -26,20 +26,17 @@
 	{
 		die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 	}
+
 	  
 	while ($row = mysqli_fetch_array($result))
 	{
 		$newVisit = $row[1] + 1;
-		echo('oldvisit'.$row[1]);
-		echo ('newVisit'.$newVisit);
 		$update = "update resources set visit=".$newVisit." where id=".$elemid.";";
-		echo '<br>'.$update;
 		$upResult = mysqli_query($connect,$update);
 		if(!$upResult){		
 			die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 		}
 		header("Location: ".$row[0]."");
-		echo 'things';
 	}
 	mysqli_close($connect);
 ?>
