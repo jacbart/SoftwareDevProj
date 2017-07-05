@@ -1,5 +1,6 @@
 <?php
 	$urllink = $_GET['urllink'];
+	echo "<script type='text/javascript' src='../JS/index.js'></script>";
 	//$connect = mysqli_connect("localhost", "root", "***", "heroku_418f9cc765f4922");
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -24,7 +25,6 @@
 	{
 		die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 	}
-	echo "<script type='text/javascript' src='../JS/index.js'></script>";
 
 	  
 	while ($row = mysqli_fetch_array($result))
@@ -40,9 +40,7 @@
 			{
 				die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 			}
-			else{
-				echo "<body onload=OpenInNewtab('".$urllink."')></body>";
-			}
+			echo "<body onload=OpenInNewtab('".$urllink."')></body>";
 		}
 	}
 	echo "finished loop";
