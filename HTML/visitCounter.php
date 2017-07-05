@@ -24,6 +24,8 @@
 	{
 		die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 	}
+	echo "<script type='text/javascript' src='../JS/index.js'></script>";
+
 	  
 	while ($row = mysqli_fetch_array($result))
 	{
@@ -39,7 +41,7 @@
 				die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 			}
 			else{
-				echo "<a href=".$row[2]." target='_blank'></a>";
+				echo "<body onload=OpenInNewtab('".$urllink."')></body>";
 			}
 		}
 	}
