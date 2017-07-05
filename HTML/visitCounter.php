@@ -31,7 +31,7 @@
 	{
 		if($row['resource'] == $urllink)
 		{
-			echo "In resource row";
+			// echo "In resource row";
 			$currentVisit = $row['visit'];
 			$newVisit = $currentVisit+1;
 			$updateVisit = "update resources set visit=".$newVisit." where id=".$row['id'].";";
@@ -40,9 +40,9 @@
 			{
 				die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 			}
-			echo "<body onload=OpenInNewtab('".$urllink."')></body>";
+			echo "<body onload=OpenInNewtab('".$urllink."')></body><br>";
 		}
 	}
-	echo "finished loop";
+	// echo "finished loop";
 	mysqli_close($connect);
 ?>
