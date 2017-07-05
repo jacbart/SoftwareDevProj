@@ -18,14 +18,14 @@ if(!$connect)
 // Gets topic id
 $topicid = $_REQUEST['topicid'];
 $topicid = (int)$topicid;
+echo $topicid;
 $topicQuery = "select * from topics where id=".$topicid.";";
 $topicResult = mysqli_query($connect, $topicQuery);
 if(!$topicResult)
 {
     die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 }
-
-echo '''
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +60,7 @@ echo '''
 
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-	<!-- jQuery (necessary for Bootstrap\'s JavaScript plugins) -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
 	<!-- Latest compiled and minified JavaScript -->
@@ -79,38 +79,35 @@ echo '''
     <div class="row">
         <div class="jumbotron col-md-8 col-md-offset-2">
             <h1>
-                <font color="#24478f">''';
-                    echo ".$topicResult[1].";
-                echo '''
+                <font color="#24478f">
+                    <?php echo ".$topicResult[1]."?>
                 </font>
             </h1>
             <p>
-                <font color="#24478f">''';
-                    echo ".$topicResult[2].";
-                echo '''
+                <font color="#24478f">
+                    <?php echo ".$topicResult[2]."?>
                 </font>
             </p>
             <div class="list-group">
-            ''';
-                $query = "select * from resources;";
-                $result = mysqli_query($connect, $query);
-                if(!$result)
-                {
-                    die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
-                }
-                  
-                while ($row = mysqli_fetch_array($result))
-                {
-                    if($row['topic_id'] == 1)
+                <?php
+                    $query = "select * from resources;";
+                    $result = mysqli_query($connect, $query);
+                    if(!$result)
                     {
-                        echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
-                        class='list-group-item'>".$row[1]."</a>";
+                        die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
-                }
-                mysqli_close($connect);
-            echo '''
+                      
+                    while ($row = mysqli_fetch_array($result))
+                    {
+                        if($row['topic_id'] == $topicid)
+                        {
+                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
+                            class='list-group-item'>".$row[1]."</a>";
+                        }
+                    }
+                    mysqli_close($connect);
+                ?>
             </div>
         </div>
     </div>
-</body>''';
-?>
+</body>
