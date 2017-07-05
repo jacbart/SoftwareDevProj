@@ -40,7 +40,7 @@
 			{
 				die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 			}
-			echo "<body onload=OpenInNewtab('".$urllink."')></body><br>";
+			echo "<body onload='OpenInNewtab('".$urllink."')'></body><br>";
 		}
 	}
 	// echo "finished loop";

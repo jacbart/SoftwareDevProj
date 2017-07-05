@@ -72,7 +72,8 @@ function globalNavbar(){
     $('body').prepend(bar);
 }
 
-function OpenInNewTab(url) {
+function OpenInNewTab(url)
+{
   var win = window.open(url, '_blank');
   win.focus();
 }
