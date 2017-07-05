@@ -27,6 +27,7 @@
 	  
 	while ($row = mysqli_fetch_array($result))
 	{
+		echo "In while loop";
 		if($row['resource'] == $urllink)
 		{
 			echo "In resource row";
@@ -44,5 +45,6 @@
 			}
 		}
 	}
+	echo "finished loop";
 	mysqli_close($connect);
 ?>
