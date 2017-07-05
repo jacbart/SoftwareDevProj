@@ -53,9 +53,9 @@ function globalNavbar(){
                         <ul class="dropdown-menu">
                             <li><a href="Python.php">Python</a></li>
                             <li class="divider"></li>
-                            <li><a href="cplusplus.html">C++</a></li>
+                            <li><a href="cplusplus.php">C++</a></li>
                             <li class="divider"></li>
-                            <li><a href="CheatSheets.html">Cheat Sheets</a></li>
+                            <li><a href="cheatsheets.php">Cheat Sheets</a></li>
                         </ul>
                     </div>
                 </div>

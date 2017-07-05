@@ -33,7 +33,7 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -52,13 +52,12 @@
         <div class="jumbotron col-md-8 col-md-offset-2">
             <h1>
                 <font color="#24478f">
-                    C++
+                    Cheat Sheets
                 </font>
             </h1>
             <p>
-            	<!-- https://www.techopedia.com/definition/26184/c-programming-language -->
                 <font color="#24478f">
-                    C++ is a general-purpose object-oriented programming (OOP) language, developed by Bjarne Stroustrup, and is an extension of the C language. It is therefore possible to code C++ in a "C style" or "object-oriented style."
+                    Quick Useful guides
                 </font>
             </p>
             <div class="list-group">
@@ -90,7 +89,7 @@
                       
                     while ($row = mysqli_fetch_array($result))
                     {
-                        if($row['topic_id'] == 2)
+                        if($row['topic_id'] == 3)
                         {
                             echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
                             class='list-group-item'>".$row[1]."</a>";
@@ -107,4 +106,3 @@
         </div>
     </div>
 </body>
-
