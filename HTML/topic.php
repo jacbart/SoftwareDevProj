@@ -17,12 +17,20 @@ if(!$connect)
 
 // Gets topic id
 $topicid = $_REQUEST['topicid'];
-$topicQuery = "select * from topics where id=".$topicid.";";
+$topicQuery = "select * from topics;";
 $topicResult = mysqli_query($connect, $topicQuery);
 if(!$topicResult)
 {
     die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 }
+while ($topicRow = mysqli_fetch_array($topicResult))
+{
+	if($topicRow['id'] == $topicid)
+	{
+		$topicResult = $topicRow;
+	}
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,8 +107,7 @@ if(!$topicResult)
                     {
                         if($row['topic_id'] == $topicResult[0])
                         {
-                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
-                            class='list-group-item'>".$row[1]."</a>";
+                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' class='list-group-item'>".$row[1]."</a>";
                         }
                     }
                     mysqli_close($connect);
