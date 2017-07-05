@@ -18,7 +18,7 @@ insert into `users` (`id`, `name`) values
 create table `topics` (
 	`id` int(1) not null AUTO_INCREMENT primary key,
 	`topic` varchar(15) not null default '',
-	`description` varchar(1000) not null default '',
+	`description` varchar(1000) not null default ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=4;
 insert into `topics` (`id`, `topic`, `description`) values
 	(1, 'Python', 'Python is a programming language that is loved by many in the computer science community. It processes code incredibly fast debuggin the programs are easy, seeing as bugs or poor inputs won\'t cause code to segmentation fault. Below are a few guides to help you get started with programming in python.'),
