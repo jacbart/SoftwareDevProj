@@ -49,12 +49,13 @@
 		type="text/javascript"
 		src="../JS/index.js">
 	</script>
+
 </head>
 
 <body>
 	<div class="row">
 		<div class="container">
-			<form class="form-signin" action="/HTML/SQLCreateUserHandler.php">
+			<form id="createForm" class="form-signin" action="/HTML/SQLCreateUserHandler.php">
 				<h2 class="form-signin-heading">Create your user account</h2>
 				<label for="username" 
 					   class="sr-only">
@@ -72,6 +73,21 @@
 					Create
 				</button>
 			</form>
+			<div id="result"></div>
+			<script>
+				$("#createForm").submit(function(event) {
+					event.preventDefault();
+
+					var $form = $(this),
+						name = $form.find("input[name='username']").val()
+						url = $form.attr("action");
+					var posting = $.post(url, {username : name});
+
+					posting.done(function(response) {
+						$("#result").empty().append(response);
+					});
+				});
+			</script>
 		</div> <!-- /container -->
 	</div>
 </body>

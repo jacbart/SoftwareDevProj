@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 <head>
 	<title>
@@ -47,7 +47,8 @@
 	</script>
 </head>
 
-<body>
+<!-- <body>
+<form id="RegisterUserForm" action="Pusher.php" method="post">
     <div class="content">
         <div class="info">
             <h1 id="title">Cheat Sheets</h1>
@@ -58,9 +59,53 @@
 
         <p>
         Links to Add to Database
-        <ul>
-            <li> <a href="https://ehmatthes.github.io/pcc/cheatsheets/README.html">Ultimate Python CheatSheet</a></li>
-    
+        <ul> -->
+          <!-- V1  <li> <a href="https://ehmatthes.github.io/pcc/cheatsheets/README.html">Ultimate Python CheatSheet</a></li> -->
+   
+
+<!-- V2 <form action="Pusher.php">
+  <input type="submit" value="click on me!">
+</form>-->
+<!-- V3 <div id = "resources">
+    <div class="portlet-body">
+     <?php
+     include('Pusher.php');
+     ?>
+     </div>-->
+
+ <?php
+                  // url = parse_url(getenv("CLEARDB_DATABASE_URL"));//heroku database things 
+
+                    $server = $url["host"];
+                    $username = $url["user"];
+                    $password = $url["pass"];
+                    $db = substr($url["path"], 1);
+
+                    // Connects to your Database 
+                    //this should connect to heroku sql
+                    $connection = mysqli_connect($server,$username2,$password,$db);
+                    if(!$connect){
+                    die(mysqli_error($connect).'because'.mysqli_errno($connect));
+                    }
+
+                    $query = "select * from resources;";
+                    $result = mysqli_query($connect, $query);
+                    if(!$result){
+                        die('Could query data: '.mysqli_error($connection).' because '.mysqli_errno($connection));
+                    }
+
+                    while ($row = mysqli_fetch_array($result)){
+                        if($row['topic_id'] == 3){
+                            echo "<tr>
+                                <td>".$row[2]."</td>
+                                <td><a href=".$row[3]."> Link</a></td>
+                            </tr>";
+                        }
+                    }
+                mysqli_close($connect);
+                ?>
+
+ </div>
         
     </div>
 </body>
