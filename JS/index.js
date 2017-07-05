@@ -72,12 +72,6 @@ function globalNavbar(){
     $('body').prepend(bar);
 }
 
-function OpenInNewTab(url)
-{
-  var win = window.open(url, '_blank');
-  win.focus();
-}
-
 // function checkCookie(name) { //https://www.w3schools.com/js/js_cookies.asp
 //     var username = getCookie(name);
 //     if (username != "") {
