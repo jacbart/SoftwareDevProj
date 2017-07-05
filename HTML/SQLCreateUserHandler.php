@@ -4,16 +4,16 @@ function isValid($username) {
 	return !preg_match('/[^a-z0-9.\-_]/i', $username);
 }
 
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-$server = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$db = substr($url["path"], 1);
+// $server = $url["host"];
+// $username = $url["user"];
+// $password = $url["pass"];
+// $db = substr($url["path"], 1);
 
 //connect to database
-// $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
-$connect = mysqli_connect($server,$username,$password,$db);
+$connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
+// $connect = mysqli_connect($server,$username,$password,$db);
 
 //check connection
 if (!$connection) {

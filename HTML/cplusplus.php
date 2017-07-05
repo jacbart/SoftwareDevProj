@@ -63,19 +63,19 @@
             </p>
             <div class="list-group">
                 <?php
-                    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+                    // $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
                     //heroku database things
 
-                    $server = $url["host"];
-                    $username = $url["user"];
-                    $password = $url["pass"];
-                    $db = substr($url["path"], 1);
+                    // $server = $url["host"];
+                    // $username = $url["user"];
+                    // $password = $url["pass"];
+                    // $db = substr($url["path"], 1);
 
                     // Connects to your Database 
                     //this should connect to heroku sql
-                    // $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
-                    $connect = mysqli_connect($server,$username,$password,$db);
+                    $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
+                    // $connect = mysqli_connect($server,$username,$password,$db);
                     if(!$connect)
                     {
                         die(mysqli_error($connect).'because'.mysqli_errno($connect));
@@ -98,11 +98,6 @@
                     }
                     mysqli_close($connect);
                 ?>
-                <!-- do we still need this stuff? -->
-                <!--<li> <a href="https://www.programiz.com/python-programming">https://www.programiz.com/python-programming</a></li>
-                <li> <a href="http://www.afterhoursprogramming.com/tutorial/Python/Introduction/">http://www.afterhoursprogramming.com/tutorial/Python/Introduction/</a></li>
-                <li> <a href="https://cscircles.cemc.uwaterloo.ca/">https://cscircles.cemc.uwaterloo.ca/</a></li>
-                <li> <a href="https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz">https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz</a></li>-->
             </div>
         </div>
     </div>
