@@ -1,5 +1,5 @@
 <?php
-	$urllink = $_GET['$urllink'];
+	$urllink = $_GET['urllink'];
 	echo $urllink;
 	//$connect = mysqli_connect("localhost", "root", "***", "heroku_418f9cc765f4922");
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
