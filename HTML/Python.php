@@ -91,7 +91,7 @@
                     {
                         if($row['topic_id'] == 1)
                         {
-                            echo "<a href=".$row[2]."class='list-group-item'>".$row[1]."</a><br>";
+                            echo "<a href=".$row[2]." class='list-group-item'>".$row[1]."</a><br>";
                         }
                     }
                     mysqli_close($connect);
