@@ -81,7 +81,7 @@
                     $query = "select * from resources;";
                     $result = mysqli_query($connect, $query);
                     if(!$result){
-                        die('Could query data: '.mysqli_error($connection).' because '.mysqli_errno($connection));
+                        die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
                       
                       while ($row = mysqli_fetch_array($result)){
@@ -92,7 +92,6 @@
                                 </li></tr>";
                                 }
                       }
-=======
 
                     while ($row = mysqli_fetch_array($result)){
                         if($row['topic_id'] == 1){
@@ -102,7 +101,6 @@
                             </tr>";
                         }
                     }
->>>>>>> 2ecd5d25b50033e9b51dca9edb692580436c5cc1
                 mysqli_close($connect);
                 ?>
                 <!-- do we still need this stuff? -->
