@@ -55,7 +55,7 @@ function globalNavbar(){
                             <li class="divider"></li>
                             <li><a href="cplusplus.php">C++</a></li>
                             <li class="divider"></li>
-                            <li><a href="CheatSheets.html">Cheat Sheets</a></li>
+                            <li><a href="cheatsheets.php">Cheat Sheets</a></li>
                         </ul>
                     </div>
                 </div>
