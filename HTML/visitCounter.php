@@ -27,14 +27,12 @@
 	  
 	while ($row = mysqli_fetch_array($result))
 	{
-		echo "In while loop";
 		if($row['resource'] == $urllink)
 		{
 			echo "In resource row";
 			$currentVisit = $row['visit'];
 			$newVisit = $currentVisit+1;
-			echo $newVisit;
-			$updateVisit = "update resources set visit=".$newVisit." where resource=".$urllink.";";
+			$updateVisit = "update resources set visit=".$newVisit." where id=".$row['id'].";";
 			$newresult = mysqli_query($connect, $updateVisit);
 			if(!$newresult)
 			{
