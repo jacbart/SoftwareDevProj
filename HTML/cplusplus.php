@@ -48,19 +48,20 @@
 </head>
 
 <body>
-    <div class="content">
-        <div class="info">
-            <h1 id="title">C++</h1>
-            <p id="description">
-                So much C++ knowlege 
+    <div class="row">
+        <div class="jumbotron col-md-8 col-md-offset-2">
+            <h1>
+                <font color="#24478f">
+                    C++
+                </font>
+            </h1>
+            <p>
+            	<!-- https://www.techopedia.com/definition/26184/c-programming-language -->
+                <font color="#24478f">
+                    C++ is a general-purpose object-oriented programming (OOP) language, developed by Bjarne Stroustrup, and is an extension of the C language. It is therefore possible to code C++ in a "C style" or "object-oriented style."
+                </font>
             </p>
-        </div>
-
-        <p>
-        Links to Add to Database
-        </p>
-	
-	<ul>
+            <div class="list-group">
                 <?php
                     //$connect = mysqli_connect("localhost", "root", "***", "heroku_418f9cc765f4922");
                     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
@@ -75,29 +76,34 @@
                     // Connects to your Database 
                     //this should connect to heroku sql
                     $connect = mysqli_connect($server,$username,$password,$db);
-                    if(!$connect){
-                    die(mysqli_error($connect).'because'.mysqli_errno($connect));
+                    if(!$connect)
+                    {
+                        die(mysqli_error($connect).'because'.mysqli_errno($connect));
                     }
 
                     $query = "select * from resources;";
                     $result = mysqli_query($connect, $query);
-                    if(!$result){
+                    if(!$result)
+                    {
                         die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
-
-                      while ($row = mysqli_fetch_array($result)){
-                            if($row['topic_id'] == 2){
-                                echo "<tr><li>
-                                        <td>".$row[1]."</td>
-                                        <td><a href=".$row[2]."> Link</a></td>
-                                </li></tr>";
-                                }
-                      }
-                mysqli_close($connect);
+                      
+                    while ($row = mysqli_fetch_array($result))
+                    {
+                        if($row['topic_id'] == 1)
+                        {
+                            echo "<a href=".$row[2]."class='list-group-item'>".$row[1]."</a><br>";
+                        }
+                    }
+                    mysqli_close($connect);
                 ?>
-	</ul>
-    
-        
+                <!-- do we still need this stuff? -->
+                <!--<li> <a href="https://www.programiz.com/python-programming">https://www.programiz.com/python-programming</a></li>
+                <li> <a href="http://www.afterhoursprogramming.com/tutorial/Python/Introduction/">http://www.afterhoursprogramming.com/tutorial/Python/Introduction/</a></li>
+                <li> <a href="https://cscircles.cemc.uwaterloo.ca/">https://cscircles.cemc.uwaterloo.ca/</a></li>
+                <li> <a href="https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz">https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz</a></li>-->
+            </div>
+        </div>
     </div>
 </body>
 
