@@ -59,13 +59,17 @@ function globalNavbar(){
                         </ul>
                     </div>
                 </div>
-                <button type="button" 
-                    class="btn btn-default pull-right" 
-                    aria-haspopup="true" 
-                    aria-expanded="false" 
-                    id="loginButton">
-                    Log In
-                </button>
+                <div class="btn-group pull-right" role="group">
+                    <a href="createuser.html"
+                        class="btn btn-default">
+                        Create User
+                    </a>
+                    <button type="button" 
+                        class="btn btn-default" 
+                        id="loginButton">
+                        Log In
+                    </button>
+                </div>
             </div>
         </nav>
     </div>`;
