@@ -1,6 +1,5 @@
 <?php
 	$urllink = $_GET['urllink'];
-	echo $urllink;
 	//$connect = mysqli_connect("localhost", "root", "***", "heroku_418f9cc765f4922");
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -30,11 +29,19 @@
 	{
 		if($row['resource'] == $urllink)
 		{
+			echo "In resource row";
 			$currentVisit = $row['visit'];
 			$newVisit = $currentVisit+1;
+			echo $newVisit;
 			$updateVisit = "update resources set visit=".$newVisit." where resource=".$urllink.";";
-			mysqli_query($connect, $updateVisit);
-			// echo "<a href=".$row[2]." target='_blank'></a>";
+			$newresult = mysqli_query($connect, $updateVisit);
+			if(!$newresult)
+			{
+				die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
+			}
+			else{
+				echo "<a href=".$row[2]." target='_blank'></a>";
+			}
 		}
 	}
 	mysqli_close($connect);
