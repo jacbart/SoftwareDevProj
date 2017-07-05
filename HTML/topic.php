@@ -17,8 +17,7 @@ if(!$connect)
 
 // Gets topic id
 $topicid = $_REQUEST['topicid'];
-$topicid = (int)$topicid;
-echo $topicid;
+// $topicid = (int)$topicid;
 $topicQuery = "select * from topics where id=".$topicid.";";
 $topicResult = mysqli_query($connect, $topicQuery);
 if(!$topicResult)
