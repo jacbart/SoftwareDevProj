@@ -62,7 +62,6 @@
             </p>
             <div class="list-group">
                 <?php
-                    //$connect = mysqli_connect("localhost", "root", "***", "heroku_418f9cc765f4922");
                     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
                     //heroku database things
@@ -74,6 +73,7 @@
 
                     // Connects to your Database 
                     //this should connect to heroku sql
+                    // $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
                     $connect = mysqli_connect($server,$username,$password,$db);
                     if(!$connect)
                     {
@@ -91,7 +91,8 @@
                     {
                         if($row['topic_id'] == 1)
                         {
-                            echo "<a href=".$row[2]." target='_blank' class='list-group-item'>".$row[1]."</a>";
+                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
+                            class='list-group-item'>".$row[1]."</a>";
                         }
                     }
                     mysqli_close($connect);

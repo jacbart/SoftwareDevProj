@@ -1,10 +1,9 @@
 <?php
-	$urllink = $_POST['$urllink'];
-	echo $urllink;
-	//$connect = mysqli_connect("localhost", "root", "***", "heroku_418f9cc765f4922");
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 	//heroku database things
+
+	$elemid = $_REQUEST['elemid'];
 
 	$server = $url["host"];
 	$username = $url["user"];
@@ -13,13 +12,15 @@
 
 	// Connects to your Database 
 	//this should connect to heroku sql
-	$connect = mysqli_connect($server,$username,$password,$db);
-	if(!$connect)
+	
+    // $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
+    $connect = mysqli_connect($server,$username,$password,$db);
+    if(!$connect)
 	{
 		die(mysqli_error($connect).'because'.mysqli_errno($connect));
 	}
 
-	$query = "select * from resources;";
+	$query = "select resource,visit from resources where id=".$elemid.";";
 	$result = mysqli_query($connect, $query);
 	if(!$result)
 	{
@@ -28,14 +29,17 @@
 	  
 	while ($row = mysqli_fetch_array($result))
 	{
-		if($row['resource'] == $urllink)
-		{
-			$currentVisit = row['visit'];
-			$newVisit = $currentVisit+1;
-			$updateVisit = "update resources set visit=".$newVisit." where resource=".$urllink.";";
-			mysqli_query($connect, $updateVisit);
-			echo "<a href=".$row[2]." target='_blank'></a>";
+		$newVisit = $row[1] + 1;
+		echo('oldvisit'.$row[1]);
+		echo ('newVisit'.$newVisit);
+		$update = "update resources set visit=".$newVisit." where id=".$elemid.";";
+		echo '<br>'.$update;
+		$upResult = mysqli_query($connect,$update);
+		if(!$upResult){		
+			die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 		}
+		header("Location: ".$row[0]."");
+		echo 'things';
 	}
 	mysqli_close($connect);
 ?>

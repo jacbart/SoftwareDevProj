@@ -12,7 +12,8 @@ $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 //connect to database
-$connection = mysqli_connect($server,$username,$password,$db); 
+// $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
+$connect = mysqli_connect($server,$username,$password,$db);
 
 //check connection
 if (!$connection) {
