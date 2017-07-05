@@ -45,6 +45,35 @@
 	<script type="text/javascript"
 			src="../JS/index.js">
 	</script>
+
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 90%;
+        }
+        .flag {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 8%;   
+        }
+    </style>
 </head>
 
 <body>
@@ -91,12 +120,59 @@
                     {
                         if($row['topic_id'] == 3)
                         {
-                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
-                            class='list-group-item'>".$row[1]."</a>";
+                            echo "
+                            <a href='visitCounter.php/?elemid=".$row[0]."' 
+                            target='_blank' class='button'>".$row[1]."</a>
+                            <button type='button'
+                                    class='flag pull-right'
+                                    onclick='myFunc(this)'
+                                    name='".$row[0]."'
+                                    >
+                                        <img src='../IMG/clearFlag.ico' 
+                                        alt='HTML5 Icon'
+                                        style='width:20px;height:20px;'
+                                        id='flag'
+                                        name='hyperlink'>
+                            </button><br>
+                            ";
+
+/*                            
+class='list-group-item'
+echo "<tr>";
+                                echo "<td>";
+                                echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
+                                class='list-group-item'>".$row[1]."</a>";
+                                echo "</td>";
+                                echo "<td>";
+                                    echo "<button type='button'
+                                    class='pull-right'
+                                    onclick='myFunc(this)'
+                                    name='".$row[2]."'
+                                    style='border: 0; background: transparent'>
+                                        <img src='../IMG/clearFlag.ico'
+                                            alt='HTML5 Icon'
+                                            style='width:20px;height:20px;'
+                                            id='flag'
+                                            name='hyperlink'>
+                                    </button>";
+                                echo "</td>";
+                            echo"</tr>";*/
+
                         }
                     }
                     mysqli_close($connect);
                 ?>
+                <button type='button'
+                        class='pull-right'
+                        onclick='myFunc(this)'
+                        name='".$row[2]."'
+                        style='border: 0; background: transparent'>
+                            <img src='../IMG/redFlag.ico'
+                                alt='HTML5 Icon'
+                                style='width:20px;height:20px;'
+                                id='flag'
+                                name='hyperlink'>
+                </button>
             </div>
         </div>
     </div>

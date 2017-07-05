@@ -93,6 +93,7 @@
                         {
                             echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
                             class='list-group-item'>".$row[1]."</a>";
+                            
                         }
                     }
                     mysqli_close($connect);
