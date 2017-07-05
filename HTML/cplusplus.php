@@ -92,7 +92,8 @@
                     {
                         if($row['topic_id'] == 2)
                         {
-                            echo "<a href=".$row[2]." target='_blank' class='list-group-item'>".$row[1]."</a>";
+                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
+                            class='list-group-item'>".$row[1]."</a>";
                         }
                     }
                     mysqli_close($connect);
