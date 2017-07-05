@@ -61,24 +61,7 @@
         </p>
             <ul>
                 <?php
-                      //$connect = mysqli_connect("localhost", "root", "***", "heroku_418f9cc765f4922");
-		      $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-		      $server = $url["host"];
-		      $username = $url["user"];
-		      $password = $url["pass"];
-		      $db = substr($url["path"], 1);
-
-		      $mysqli_connect($server,$username,$password,$db);
-                      //this should connect to heroku sql
-                      if(!$connect){
-                        die('Connection error: '.mysqli_error($connect).'because'.mysqli_errno($connect));
-                      }
-                      
-                      $query = "select * from resources;";
-                      
-                      $result = mysqli_query($connect, $query);
-
+                    //$connect = mysqli_connect("localhost", "root", "***", "heroku_418f9cc765f4922");
                     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 		    //heroku database things
@@ -90,7 +73,7 @@
 
                     // Connects to your Database 
                     //this should connect to heroku sql
-                    $connection = mysqli_connect($server,$username2,$password,$db);
+                    $connect = mysqli_connect($server,$username2,$password,$db);
                     if(!$connect){
                     die(mysqli_error($connect).'because'.mysqli_errno($connect));
                     }
@@ -100,7 +83,6 @@
                     if(!$result){
                         die('Could query data: '.mysqli_error($connection).' because '.mysqli_errno($connection));
                     }
-<<<<<<< HEAD
                       
                       while ($row = mysqli_fetch_array($result)){
                             if($row['topic_id'] == 1){
