@@ -34,7 +34,8 @@ create table `resources` (
 insert into `resources` (`id`, `title`, `resource`, `visit`, `topic_id`) values
 	(1, 'ultimate python guide', 'https://www.google.com/search?q=pyhone&oq=pyhone&aqs=chrome..69i57j0l5.3420j0j7&sourceid=chrome&ie=UTF-8#q=python', 0, 1),
 	(2, 'ultimate cpp guide', 'https://www.google.com/search?q=pyhone&oq=pyhone&aqs=chrome..69i57j0l5.3420j0j7&sourceid=chrome&ie=UTF-8#q=c%2B%2B', 0, 2),
-	(3, 'google', 'https://support.google.com/websearch/answer/134479?hl=en', 0, 3);
+	(3, 'Ultimate Python CheatSheet', 'https://ehmatthes.github.io/pcc/cheatsheets/README.html', 0, 3);
+	(4, 'google', 'https://support.google.com/websearch/answer/134479?hl=en', 0, 3);
 	
 create table `garbage` (
 	`id` int(1) not null primary key
