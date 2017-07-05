@@ -1,3 +1,29 @@
+<?php
+//heroku database things
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+
+// Connects to your Database 
+//this should connect to heroku sql
+$connect = mysqli_connect($server,$username,$password,$db);
+if(!$connect)
+{
+	die(mysqli_error($connect).'because'.mysqli_errno($connect));
+}
+
+// Gets topic id
+$topicid = $_REQUEST['topicid'];
+$topicQuery = "select * from topics where id=".$topicid.";";
+$topicResult = mysqli_query($connect, $topicQuery);
+if(!$topicResult)
+{
+    die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,32 +72,7 @@
 			src="../JS/index.js">
 	</script>
 </head>
-<?php
-//heroku database things
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-$server = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$db = substr($url["path"], 1);
-
-// Connects to your Database 
-//this should connect to heroku sql
-$connect = mysqli_connect($server,$username,$password,$db);
-if(!$connect)
-{
-	die(mysqli_error($connect).'because'.mysqli_errno($connect));
-}
-
-// Gets topic id
-$topicid = $_REQUEST['topicid'];
-$topicQuery = "select * from topics where id=".$topicid.";";
-$topicResult = mysqli_query($connect, $topicQuery);
-if(!$topicResult)
-{
-    die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
-}
-?>
 <body>
     <div class="row">
         <div class="jumbotron col-md-8 col-md-offset-2">
