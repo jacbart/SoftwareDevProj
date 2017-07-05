@@ -47,24 +47,25 @@
 	</script>
 </head>
 
-<body>`
-    <div class="content">
-        <div class="info">
-            <h1 id="title">Python</h1>
-            <p id="description">
-                Python is a programming language that is loved by many in the computer science community. It processes code incredibly fast debuggin the programs are easy, seeing as bugs or poor inputs won't cause code to segmentation fault. Below are a few guides to help you get started with programming in python.
+<body>
+    <div class="row">
+        <div class="jumbotron col-md-8 col-md-offset-2">
+            <h1>
+                <font color="#24478f">
+                    Python
+                </font>
+            </h1>
+            <p>
+                <font color="#24478f">
+                    Python is a programming language that is loved by many in the computer science community. It processes code incredibly fast debuggin the programs are easy, seeing as bugs or poor inputs won't cause code to segmentation fault. Below are a few guides to help you get started with programming in python.
+                </font>
             </p>
-        </div>
-
-        <p id="beginner">
-        list of Links to add to the database and connect to the webpage
-        </p>
-            <ul>
+            <div class="list-group">
                 <?php
                     //$connect = mysqli_connect("localhost", "root", "***", "heroku_418f9cc765f4922");
                     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-		    //heroku database things
+                    //heroku database things
 
                     $server = $url["host"];
                     $username = $url["user"];
@@ -74,40 +75,33 @@
                     // Connects to your Database 
                     //this should connect to heroku sql
                     $connect = mysqli_connect($server,$username,$password,$db);
-                    if(!$connect){
-                    die(mysqli_error($connect).'because'.mysqli_errno($connect));
+                    if(!$connect)
+                    {
+                        die(mysqli_error($connect).'because'.mysqli_errno($connect));
                     }
 
                     $query = "select * from resources;";
                     $result = mysqli_query($connect, $query);
-                    if(!$result){
+                    if(!$result)
+                    {
                         die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
                       
-                      while ($row = mysqli_fetch_array($result)){
-                            if($row['topic_id'] == 1){
-                                echo "<tr><li>
-                                        <td>".$row[1]."</td>
-                                        <td><a href=".$row[2]."> Link</a></td>
-                                </li></tr>";
-                                }
-                      }
-                mysqli_close($connect);
+                    while ($row = mysqli_fetch_array($result))
+                    {
+                        if($row['topic_id'] == 1)
+                        {
+                            echo "<a href=".$row[2]."class='list-group-item'>".$row[1]."</a><br>";
+                        }
+                    }
+                    mysqli_close($connect);
                 ?>
                 <!-- do we still need this stuff? -->
                 <!--<li> <a href="https://www.programiz.com/python-programming">https://www.programiz.com/python-programming</a></li>
                 <li> <a href="http://www.afterhoursprogramming.com/tutorial/Python/Introduction/">http://www.afterhoursprogramming.com/tutorial/Python/Introduction/</a></li>
                 <li> <a href="https://cscircles.cemc.uwaterloo.ca/">https://cscircles.cemc.uwaterloo.ca/</a></li>
                 <li> <a href="https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz">https://www.youtube.com/playlist?list=PLlgoYPTU6ljCEggReCMF0m0760QTot9Qz</a></li>-->
-            </ul>
-        <p>
-        Potentially, these might be more of an embedded format as opposed to direct links.
-        </p>
-    
-        <p id="internediate">
-            
-        </p>
-    
-        
+            </div>
+        </div>
     </div>
 </body>
