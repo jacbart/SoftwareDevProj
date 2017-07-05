@@ -1,28 +1,31 @@
 <?php
-//heroku database things
+// Parsing out a URL provided by ClearBD
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
+// Setting the variables required to connect to the database
 $server = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 
-// Connects to your Database 
-//this should connect to heroku sql
+// Connects to MySQL Database on Heroku
 $connect = mysqli_connect($server,$username,$password,$db);
 if(!$connect)
 {
 	die(mysqli_error($connect).'because'.mysqli_errno($connect));
 }
 
-// Gets topic id
+// Gets topic id from the url
 $topicid = $_REQUEST['topicid'];
+// Creates query for mysql database
 $topicQuery = "select * from topics;";
+// Sends the query to mysql and checks if it worked
 $topicResult = mysqli_query($connect, $topicQuery);
 if(!$topicResult)
 {
     die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
 }
+// Selects the proper row of data with id equal to topicid
 while ($topicRow = mysqli_fetch_array($topicResult))
 {
 	if($topicRow['id'] == $topicid)
@@ -86,23 +89,27 @@ while ($topicRow = mysqli_fetch_array($topicResult))
         <div class="jumbotron col-md-8 col-md-offset-2">
             <h1>
                 <font color="#24478f">
+                	<!-- echos the topic's title -->
                     <?php echo $topicResult[1]?>
                 </font>
             </h1>
             <p>
                 <font color="#24478f">
+                	<!-- echos the topic's description -->
                     <?php echo $topicResult[2]?>
                 </font>
             </p>
             <div class="list-group">
                 <?php
+                	// Creates a query to select all items from resources
                     $query = "select * from resources;";
+                    // Runs the query from above
                     $result = mysqli_query($connect, $query);
                     if(!$result)
                     {
                         die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
-                      
+                    // Selects the rows the have the matching topic id of topicResults[0] and displays them
                     while ($row = mysqli_fetch_array($result))
                     {
                         if($row['topic_id'] == $topicResult[0])
@@ -110,6 +117,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                             echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' class='list-group-item'>".$row[1]."</a>";
                         }
                     }
+                    // Closes the variable connect
                     mysqli_close($connect);
                 ?>
             </div>
