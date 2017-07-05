@@ -47,31 +47,6 @@
 	</script>
 </head>
 
-<!--<body>
-<form id="RegisterUserForm" action="Pusher.php" method="post">
-    <div class="content">
-        <div class="info">
-            <h1 id="title">Cheat Sheets</h1>
-            <p id="description">
-                These are Cheat Sheets! Very Useful as a Reference. 
-            </p>
-        </div>
-
-        <p>
-        Links to Add to Database
-        <ul> -->
-          <!-- V1  <li> <a href="https://ehmatthes.github.io/pcc/cheatsheets/README.html">Ultimate Python CheatSheet</a></li> -->
-   
-
-<!-- V2 <form action="Pusher.php">
-  <input type="submit" value="click on me!">
-</form>-->
-<!-- V3 <div id = "resources">
-    <div class="portlet-body">
-     <?php
-include('Pusher.php');
-?>
-</div>-->
 <body>
 <?php
                     // url = parse_url(getenv("CLEARDB_DATABASE_URL"));//heroku database things
@@ -92,14 +67,28 @@ include('Pusher.php');
                         die('Could query data: '.mysqli_error($connection).' because '.mysqli_errno($connection));
                     }
                     while ($row = mysqli_fetch_array($result)){
-                        if($row['topic_id'] == 1){
-                            echo "<tr>
-                                <td>".$row[2]."</td>
-                                <td><a href=".$row[3]."> Link</a></td>
-                            </tr>";
+                        if($row['topic_id'] == 3){
+                            echo '<tr>
+				<td>
+					'.$row[1].'
+				</td>
+				 <td>
+					<form action="Puller.php" method="post">
+	            			<button type="submit"
+	                		style="border: 0; background: light blue"
+					name="'.$row[2].'">
+	                		Link
+	            			</button>
+            				</form>
+			            <a href="'.$row[2].'"> Link </a>
+                                </td>
+                            </tr>';
                         }
                     }
                 mysqli_close($connection);
-                ?>
+                
+?>
 </body>
+<!-- <td>".$row[1]."</td>
+                                <td><a href=".$row[2]."> Click Here!</a></td> -->
 

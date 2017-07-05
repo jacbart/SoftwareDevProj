@@ -1,41 +1,33 @@
 <?php
-//$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-//$server = $url["host"];
-//$username = $url["user"];
-//$password = $url["pass"];
-//$db = substr($url["path"], 1);
+  // url = parse_url(getenv("CLEARDB_DATABASE_URL"));//heroku database things
+                    $server = $url["host"];
+                    $username = $url["user"];
+                    $password = $url["pass"];
+                    $db = substr($url["path"], 1);
+                    // Connects to your Database 
+                    //this should connect to heroku sql
+                    // $connection = mysqli_connect($server,$username2,$password,$db);
+                    $connection = mysqli_connect("localhost","root","ejc786", "heroku_418f9cc765f4922");
+                    if(!$connection){
+                    die(mysqli_error($connection).'because'.mysqli_errno($connection));
+                    }
+                    $query = "select * from resources;";
+                    $result = mysqli_query($connection, $query);
+                    if(!$result){
+                        die('Could query data: '.mysqli_error($connection).' because '.mysqli_errno($connection));
+                    }
 
-//connect to database
-//$connection = mysqli_connect($server,$username,$password,$db);
+echo "hello";
 
-//check connection
-//if (!$connection) {
-//	echo "<h4>Failed to connect to connect to MySQL: ".mysqli_connect_error();
-//	die();
-//}
+while ($row = mysqli_fetch_assoc($result)){
+	echo $row["visit"];
+}
+//$CurrentVisit = mysqli_fetch_assoc($result["visit"]);
 
-$Connect = mysql_connect('Localhost','root','');
-$Database = mysql_select_db("ThatCSGuide");
-$Result = mysql_query("SELECT * FROM resources");
-
-$CurrentVisit = mysql_fetch_assoc($Result["visit"]);
-
-$NewVisit = $CurrentVisit+1;
-$UpdateField = mysql_query("UPDATE resources SET visit = '$NewVisit'");
-echo $NewVisit;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//$NewVisit = $CurrentVisit+1;
+//$UpdateField = mysqli_query($connection, "UPDATE resources SET visit = '$NewVisit'");
+//echo $NewVisit;
 
 ?>
+
+
