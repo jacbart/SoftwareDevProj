@@ -79,19 +79,19 @@ echo '''
     <div class="row">
         <div class="jumbotron col-md-8 col-md-offset-2">
             <h1>
-                <font color="#24478f">'''
-                    echo ".$topicResult[1]."
+                <font color="#24478f">''';
+                    echo ".$topicResult[1].";
                 echo '''
                 </font>
             </h1>
             <p>
-                <font color="#24478f">'''
-                    echo ".$topicResult[2]."
+                <font color="#24478f">''';
+                    echo ".$topicResult[2].";
                 echo '''
                 </font>
             </p>
             <div class="list-group">
-            '''
+            ''';
                 $query = "select * from resources;";
                 $result = mysqli_query($connect, $query);
                 if(!$result)
@@ -112,5 +112,5 @@ echo '''
             </div>
         </div>
     </div>
-</body>'''
+</body>''';
 ?>
