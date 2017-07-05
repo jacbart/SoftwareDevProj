@@ -91,7 +91,7 @@
                     {
                         if($row['topic_id'] == 3)
                         {
-                            echo "<a href='visitCounter.php".$urllink=$row[2]."' class='list-group-item'>".$row[1]."</a>";
+                            echo "<a href='visitCounter.php?".$urllink=$row[2]."' class='list-group-item'>".$row[1]."</a>";
                         }
                     }
                     mysqli_close($connect);
