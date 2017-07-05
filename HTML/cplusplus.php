@@ -90,7 +90,7 @@
                       
                     while ($row = mysqli_fetch_array($result))
                     {
-                        if($row['topic_id'] == 1)
+                        if($row['topic_id'] == 2)
                         {
                             echo "<a href=".$row[2]."class='list-group-item'>".$row[1]."</a><br>";
                         }
