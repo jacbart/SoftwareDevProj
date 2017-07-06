@@ -9,7 +9,7 @@ $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 // Connects to MySQL Database on Heroku
-// $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
+// $connect = mysqli_connect("localhost", "root", "pass", "heroku_418f9cc765f4922");
 $connect = mysqli_connect($server,$username,$password,$db);
 if(!$connect)
 {
