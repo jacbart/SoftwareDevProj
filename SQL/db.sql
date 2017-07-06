@@ -5,15 +5,16 @@ set autocommit=0;
 
 create table `users` (
 	`id` int(1) not null AUTO_INCREMENT primary key,
-	`name` varchar(20) not null default ''
+	`name` varchar(20) not null default '',
+	`fav` varchar(100) not null default ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=7;
-insert into `users` (`id`, `name`) values
-	(1, 'admin'),
-	(2, 'jack'),
-	(3, 'holden'),
-	(4, 'matt'),
-	(5, 'elijah'),
-	(6, 'cash');
+insert into `users` (`id`, `name`, `fav`) values
+	(1, 'admin', ''),
+	(2, 'jack', ''),
+	(3, 'holden', ''),
+	(4, 'matt', ''),
+	(5, 'elijah', ''),
+	(6, 'cash', '');
 
 create table `topics` (
 	`id` int(1) not null AUTO_INCREMENT primary key,
