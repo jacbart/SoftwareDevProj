@@ -137,15 +137,14 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                         die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
 					$favs = explode(',', $favresult);
-					echo $favs;
 					foreach ($favs as &$val) {
 						$val = (int)$val;
 					}
-					echo $favs;
                     // Selects the rows the have the matching topic id of topicResults[0] and displays them
                     while ($row = mysqli_fetch_array($resresult))
                     {
-						echo $row[0]." ".$row['id']."<br>";
+						//echo $row[0]." ".$row['id']."<br>";
+						echo $favs;
                         if(in_array($row['id'], $favs))
                         {
 							echo "
