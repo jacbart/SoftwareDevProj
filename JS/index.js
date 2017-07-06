@@ -23,7 +23,7 @@ function myFunc(elem){
     document.getElementById(elem.id).innerHTML = `
         <img src='../IMG/redFlag.ico' 
             alt='HTML5 Icon'
-            style='width:20px;height:20px;'>
+            style='width:40px;height:40px;'>
     `;
     alert( `We have registered that this is a bad link. Thank you for your support and we\'ll fix it soon as we can`)
 }
