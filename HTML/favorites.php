@@ -143,7 +143,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                     // Selects the rows the have the matching topic id of topicResults[0] and displays them
                     while ($row = mysqli_fetch_array($resresult))
                     {
-						echo $row;
+						echo $row[0]." ".$row[1];
                         if(in_array($row['id'], $favs))
                         {
 							echo "
