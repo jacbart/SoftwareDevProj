@@ -131,18 +131,18 @@ while ($topicRow = mysqli_fetch_array($topicResult))
 					$resquery = "select * from resources;";
                     // Runs the query from above
                     $favresult = mysqli_query($connect, $favquery);
+					echo $favresult;
                     $resresult = mysqli_query($connect, $resquery);
                     if(!$favresult)
                     {
                         die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
-					echo "test1<br>"
+					echo "test1<br>";
 					$favs = explode(',', $favresult);
-					echo print_r($favs);
 					foreach ($favs as &$val) {
 						$val = (int)$val;
 					}
-					echo print_r($favs);
+					echo "test2<br>";
                     // Selects the rows the have the matching topic id of topicResults[0] and displays them
                     while ($row = mysqli_fetch_array($resresult))
                     {
