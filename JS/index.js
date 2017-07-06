@@ -28,11 +28,18 @@ function myFunc(elem){
     alert( `We have registered that this is a bad link. Thank you for your support and we\'ll fix it soon as we can`)
 }
 
-function myFunc2(elem,num){
-    console.log(elem.id);
-    // document.getElementById(elem.id).hide;
+function myFunc2(elem) {
+	var elemid = elem.id;
+	var resid = elemid.substring(3);
+    console.log(resid);
+	//console.log(getCookie('ThatCSGuide'));
+	$.post('/HTML/favoriter.php',
+			{'name' : getCookie('ThatCSGuide'), 'resourceid':resid},
+			function(response) {
+				console.log(response);
+			});
     document.getElementById(elem.id).innerHTML = `
-        <img src='/IMG/favorited.png' 
+        <img src='../IMG/favorited.png' 
             alt='Favorited'
             style='width:20px;height:20px;'>
     `;

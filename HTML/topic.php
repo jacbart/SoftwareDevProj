@@ -1,5 +1,5 @@
 <?php
-// Parsing out a URL provided by ClearBD
+// Parsing out a URL provided by ClearDB
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 // Setting the variables required to connect to the database
@@ -9,7 +9,6 @@ $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 // Connects to MySQL Database on Heroku
-// $connect = mysqli_connect("localhost", "root", "pass", "heroku_418f9cc765f4922");
 $connect = mysqli_connect($server,$username,$password,$db);
 if(!$connect)
 {
@@ -178,7 +177,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                             </button>
 							<button type='button' 
 								class='fav pull-right' 
-								onclick='myFunc2(this, ".$row[0]."'
+								onclick='myFunc2(this)'
 								id='fav".$row[0]."'>
 									<img src='/IMG/addToFavorites.png'
 									alt='Add to favorites'
