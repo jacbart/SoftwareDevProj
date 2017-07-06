@@ -146,8 +146,12 @@ while ($topicRow = mysqli_fetch_array($topicResult))
 
                 	// Creates a query to select all items from resources
                     $query = "select * from resources;";
+					$favquery = "select fav from users where name='".$_COOKIE['ThatCSGuide']."';";
                     // Runs the query from above
-                    $result = mysqli_query($connect, $query);
+					$result = mysqli_query($connect, $query);
+					$favresult = mysqli_query($connect, $query);
+					$favs = explode(',', mysqli_fetch_row($favresult)[0]);
+
                     if(!$result)
                     {
                         die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
@@ -167,16 +171,28 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                                     <img src='../IMG/clearFlag.ico' 
                                     alt='HTML5 Icon' 
                                     style='width:20px;height:20px;'>
-                            </button>
-							<button type='button' 
-								class='fav pull-right' 
-								onclick='myFunc2(this)'
-								id='fav".$row[0]."'>
-									<img src='/IMG/addToFavorites.png'
-									alt='Add to favorites'
-									style='width:20px;height:20px;'>
-							</button>
-                            ";
+							</button>";
+							if (in_array($row['id'], $favs)) {
+								echo "
+								<img src='SRC'
+									 class='fav pull-right'
+									 id='fav".$row[0]."'
+									 alt='Favorited'
+									 style='width:20px:height:20px;'>
+								";
+							}
+							else {
+								echo "
+								<button type='button' 
+									class='fav pull-right' 
+									onclick='myFunc2(this)'
+									id='fav".$row[0]."'>
+										<img src='/IMG/addToFavorites.png'
+										alt='Add to favorites'
+										style='width:20px;height:20px;'>
+								</button>
+                            	";
+							}
                        }
                     }
                     // Closes the variable connect
