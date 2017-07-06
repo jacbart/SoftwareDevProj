@@ -8,4 +8,9 @@ body
 	background-attachment: fixed;
 	/*makes the background non-repeating*/
 	background-repeat: no-repeat;
+	/*changes the text to white*/
+	color:#ffffff;
+}
+p{
+	color:#ffffff;
 }
