@@ -61,10 +61,6 @@ function globalNavbar(){
                     </div>
                 </div>
                 <div class="btn-group pull-right" role="group">
-                    <a href="createuser.html"
-                        class="btn btn-default">
-                        Create User
-                    </a>
                     <button type="button" 
                         class="btn btn-default" 
                         id="loginButton">
@@ -77,6 +73,10 @@ function globalNavbar(){
     $('body').prepend(bar);
 }
 
+                    // <a href="createuser.html"
+                    //     class="btn btn-default">
+                    //     Create User
+                    // </a>
 // function checkCookie(name) { //https://www.w3schools.com/js/js_cookies.asp
 //     var username = getCookie(name);
 //     if (username != "") {
