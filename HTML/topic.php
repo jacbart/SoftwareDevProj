@@ -160,7 +160,8 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                                     name='hyperlink'>
                             </button><br>
                             ";
-/*                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' class='list-group-item'>".$row[1]."</a>";*/                        }
+/*                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' class='list-group-item'>".$row[1]."</a>";*/ 
+                       }
                     }
                     // Closes the variable connect
                     mysqli_close($connect);
