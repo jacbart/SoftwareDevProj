@@ -175,7 +175,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
 							";
 							if (in_array($row['id'], $favs)) {
 								echo "
-								<img src='SRC'
+								<img src='/IMG/favorited.png'
 									 class='fav pull-right'
 									 id='fav".$row[0]."'
 									 alt='Favorited'
