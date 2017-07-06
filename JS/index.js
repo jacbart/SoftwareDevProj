@@ -12,7 +12,12 @@ $(document).ready(function(){ //this is breaking the code and IDK why =(
 });
 
 function myFunc(elem){
-    alert(elem.name);
+    var elemId = $(this).attr('name');
+    var nextPage = 'flagCounter.php';
+    console.log('ding');
+    $.post(nextPage,elemId,function(response){
+        document.getElementById("flag").innerHTML = "dicks"
+    });
 }
 
 //magic code pulled from https://www.w3schools.com/js/js_cookies.asp
@@ -55,11 +60,11 @@ function globalNavbar(){
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="Python.php">Python</a></li>
+                            <li><a href="topic.php?topicid=1">Python</a></li>
                             <li class="divider"></li>
-                            <li><a href="cplusplus.php">C++</a></li>
+                            <li><a href="topic.php?topicid=2">C++</a></li>
                             <li class="divider"></li>
-                            <li><a href="cheatsheets.php">Cheat Sheets</a></li>
+                            <li><a href="topic.php?topicid=3">Cheat Sheets</a></li>
                         </ul>
                     </div>
                 </div>

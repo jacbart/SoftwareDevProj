@@ -17,12 +17,13 @@ insert into `users` (`id`, `name`) values
 
 create table `topics` (
 	`id` int(1) not null AUTO_INCREMENT primary key,
-	`topic` varchar(15) not null default ''
+	`topic` varchar(15) not null default '',
+	`description` varchar(1000) not null default ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=4;
-insert into `topics` (`id`, `topic`) values
-	(1, 'python'),
-	(2, 'cpp'),
-	(3, 'cheat_sheets');
+insert into `topics` (`id`, `topic`, `description`) values
+	(1, 'Python', 'Python is a programming language that is loved by many in the computer science community. It processes code incredibly fast debuggin the programs are easy, seeing as bugs or poor inputs won\'t cause code to segmentation fault. Below are a few guides to help you get started with programming in python.'),
+	(2, 'C++', 'C++ is a general-purpose object-oriented programming (OOP) language, developed by Bjarne Stroustrup, and is an extension of the C language. It is therefore possible to code C++ in a "C style" or "object-oriented style."'),
+	(3, 'Cheat Sheets', 'Quick useful guides');
 
 create table `resources` (
 	`id` int(2) not null AUTO_INCREMENT primary key, 

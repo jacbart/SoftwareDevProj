@@ -1,3 +1,41 @@
+<?php
+// Parsing out a URL provided by ClearBD
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+// Setting the variables required to connect to the database
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+
+// Connects to MySQL Database on Heroku
+$connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
+// $connect = mysqli_connect($server,$username,$password,$db);
+if(!$connect)
+{
+	die(mysqli_error($connect).'because'.mysqli_errno($connect));
+}
+
+// Gets topic id from the url
+$topicid = $_REQUEST['topicid'];
+// Creates query for mysql database
+$topicQuery = "select * from topics;";
+// Sends the query to mysql and checks if it worked
+$topicResult = mysqli_query($connect, $topicQuery);
+if(!$topicResult)
+{
+    die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
+}
+// Selects the proper row of data with id equal to topicid
+while ($topicRow = mysqli_fetch_array($topicResult))
+{
+	if($topicRow['id'] == $topicid)
+	{
+		$topicResult = $topicRow;
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,11 +86,11 @@
 
     <style>
         .button {
-            background-color: #4CAF50; /* Green */
+            background-color: #ffffff; /* Green */
             border: none;
-            color: white;
+            color: grey;
             padding: 15px 32px;
-            text-align: center;
+            text-align: left;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
@@ -61,9 +99,9 @@
             width: 90%;
         }
         .flag {
-            background-color: #4CAF50; /* Green */
+            background-color: #ffffff; /* Green */
             border: none;
-            color: white;
+            color: black;
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
@@ -81,85 +119,50 @@
         <div class="jumbotron col-md-8 col-md-offset-2">
             <h1>
                 <font color="#24478f">
-                    Cheat Sheets
+                	<!-- echos the topic's title -->
+                    <?php echo $topicResult[1]?>
                 </font>
             </h1>
             <p>
                 <font color="#24478f">
-                    Quick Useful guides
+                	<!-- echos the topic's description -->
+                    <?php echo $topicResult[2]?>
                 </font>
             </p>
             <div class="list-group">
                 <?php
-                    // $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-                    //heroku database things
-
-                    // $server = $url["host"];
-                    // $username = $url["user"];
-                    // $password = $url["pass"];
-                    // $db = substr($url["path"], 1);
-
-                    // Connects to your Database 
-                    //this should connect to heroku sql
-                    $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
-                    // $connect = mysqli_connect($server,$username,$password,$db);
-                    if(!$connect)
-                    {
-                        die(mysqli_error($connect).'because'.mysqli_errno($connect));
-                    }
-
+                	// Creates a query to select all items from resources
                     $query = "select * from resources;";
+                    // Runs the query from above
                     $result = mysqli_query($connect, $query);
                     if(!$result)
                     {
                         die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
-                      
+                    // Selects the rows the have the matching topic id of topicResults[0] and displays them
                     while ($row = mysqli_fetch_array($result))
                     {
-                        if($row['topic_id'] == 3)
+                        if($row['topic_id'] == $topicResult[0])
                         {
-                            echo "
+                           echo "
                             <a href='visitCounter.php/?elemid=".$row[0]."' 
                             target='_blank' class='button'>".$row[1]."</a>
                             <button type='button'
-                                    class='flag pull-right'
-                                    onclick='myFunc(this)'
-                                    name='".$row[0]."'
-                                    >
-                                        <img src='../IMG/clearFlag.ico' 
-                                        alt='HTML5 Icon'
-                                        style='width:20px;height:20px;'
-                                        id='flag'
-                                        name='hyperlink'>
+                                class='flag pull-right'
+                                onclick='myFunc(this)'
+                                name='".$row[1]."'
+                                id='flag'>
+                                    <img src='../IMG/clearFlag.ico' 
+                                    alt='HTML5 Icon'
+                                    style='width:20px;height:20px;'
+                                    id='flag'
+                                    name='hyperlink'>
                             </button><br>
                             ";
-
-/*                            
-class='list-group-item'
-echo "<tr>";
-                                echo "<td>";
-                                echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' 
-                                class='list-group-item'>".$row[1]."</a>";
-                                echo "</td>";
-                                echo "<td>";
-                                    echo "<button type='button'
-                                    class='pull-right'
-                                    onclick='myFunc(this)'
-                                    name='".$row[2]."'
-                                    style='border: 0; background: transparent'>
-                                        <img src='../IMG/clearFlag.ico'
-                                            alt='HTML5 Icon'
-                                            style='width:20px;height:20px;'
-                                            id='flag'
-                                            name='hyperlink'>
-                                    </button>";
-                                echo "</td>";
-                            echo"</tr>";*/
-
-                        }
+/*                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' class='list-group-item'>".$row[1]."</a>";*/                        }
                     }
+                    // Closes the variable connect
                     mysqli_close($connect);
                 ?>
                 <button type='button'
