@@ -142,7 +142,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                     {
                         if(in_array($row['topic_id'], $favs))
                         {
-                           echo "
+							echo "
                             <a href='visitCounter.php/?elemid=".$row[0]."' 
                             target='_blank' class='button'>".$row[1]."</a>
                             <button type='button'
@@ -150,7 +150,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                                 onclick='myFunc(this)'
                                 id='".$row[0]."'>
                                     <img src='../IMG/clearFlag.ico' 
-                                    alt='HTML5 Icon'
+                                    alt='HTML5 Icon' 
                                     style='width:20px;height:20px;'>
                             </button>
                             ";
