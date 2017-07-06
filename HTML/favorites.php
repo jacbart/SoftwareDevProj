@@ -137,7 +137,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                         die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
 					echo "test1<br>";
-					$favs = explode(',', $favresult);
+					$favs = explode(',', mysqli_fetch_row($favresult)[0]);
 					foreach ($favs as &$val) {
 						$val = (int)$val;
 					}
