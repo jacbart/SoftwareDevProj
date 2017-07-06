@@ -9,7 +9,7 @@ $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 // Connects to MySQL Database on Heroku
-// $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
+// $connect = mysqli_connect("localhost", "root", "pass", "heroku_418f9cc765f4922");
 $connect = mysqli_connect($server,$username,$password,$db);
 if(!$connect)
 {
@@ -158,32 +158,17 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                             <button type='button'
                                 class='flag pull-right'
                                 onclick='myFunc(this)'
-                                name='".$row[1]."'
-                                id='flag'>
+                                id='".$row[0]."'>
                                     <img src='../IMG/clearFlag.ico' 
                                     alt='HTML5 Icon'
-                                    style='width:20px;height:20px;'
-                                    id='flag'
-                                    name='hyperlink'>
-                            </button><br>
+                                    style='width:20px;height:20px;'>
+                            </button>
                             ";
-/*                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' class='list-group-item'>".$row[1]."</a>";*/ 
                        }
                     }
                     // Closes the variable connect
                     mysqli_close($connect);
                 ?>
-                <button type='button'
-                        class='pull-right'
-                        onclick='myFunc(this)'
-                        name='".$row[2]."'
-                        style='border: 0; background: transparent'>
-                            <img src='../IMG/redFlag.ico'
-                                alt='HTML5 Icon'
-                                style='width:20px;height:20px;'
-                                id='flag'
-                                name='hyperlink'>
-                </button>
             </div>
         </div>
     </div>

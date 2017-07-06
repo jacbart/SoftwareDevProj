@@ -13,7 +13,7 @@
 	// Connects to your Database 
 	//this should connect to heroku sql
 	
-    // $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
+    // $connect = mysqli_connect("localhost", "root", "pass", "heroku_418f9cc765f4922");
     $connect = mysqli_connect($server,$username,$password,$db);
     if(!$connect)
 	{

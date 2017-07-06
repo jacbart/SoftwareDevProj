@@ -1,4 +1,4 @@
-$(document).ready(function(){ //this is breaking the code and IDK why =(
+$(document).ready(function(){ 
     globalNavbar();
     loginButton();
     console.log(getCookie('ThatCSGuide'));
@@ -12,13 +12,20 @@ $(document).ready(function(){ //this is breaking the code and IDK why =(
     };
 });
 
+
 function myFunc(elem){
-    var elemId = $(this).attr('name');
     var nextPage = 'flagCounter.php';
-    console.log('ding');
-    $.post(nextPage,elemId,function(response){
-        document.getElementById("flag").innerHTML = "dicks"
+    var data = {'elemid':elem.id};
+    console.log(elem.id);
+    $.post(nextPage,data, function(response){
+        console.log('worked'); //here to check if it worked
     });
+    document.getElementById(elem.id).innerHTML = `
+        <img src='../IMG/redFlag.ico' 
+            alt='HTML5 Icon'
+            style='width:20px;height:20px;'>
+    `;
+    alert( `We have registered that this is a bad link. Thank you for your support and we\'ll fix it soon as we can`)
 }
 
 //magic code pulled from https://www.w3schools.com/js/js_cookies.asp
