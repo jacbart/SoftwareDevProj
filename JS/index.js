@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 function myFunc(elem){
     var nextPage = 'flagCounter.php';
-    console.log('ding');
+    console.log('elem.id');
     alert(elem.id);
     // document.getElementById(elem.id).hide;
     document.getElementById(elem.id).innerHTML = `
