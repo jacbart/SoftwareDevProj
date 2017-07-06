@@ -140,9 +140,8 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                     // Selects the rows the have the matching topic id of topicResults[0] and displays them
                     while ($row = mysqli_fetch_array($resresult))
                     {
-                        if(in_array($row['topic_id'], $favs))
+                        if(in_array($row['id'], $favs))
                         {
-							echo "<p>test</p>";
 							echo "
                             <a href='visitCounter.php/?elemid=".$row[0]."' 
                             target='_blank' class='button'>".$row[1]."</a>
