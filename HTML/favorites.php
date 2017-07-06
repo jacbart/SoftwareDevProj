@@ -142,6 +142,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                     {
                         if(in_array($row['topic_id'], $favs))
                         {
+							echo "<p>test</p>";
 							echo "
                             <a href='visitCounter.php/?elemid=".$row[0]."' 
                             target='_blank' class='button'>".$row[1]."</a>
