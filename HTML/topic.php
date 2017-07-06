@@ -9,6 +9,7 @@ $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 // Connects to MySQL Database on Heroku
+// $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
 $connect = mysqli_connect($server,$username,$password,$db);
 if(!$connect)
 {
@@ -89,6 +90,35 @@ while ($topicRow = mysqli_fetch_array($topicResult))
 	<script type="text/javascript"
 			src="../JS/index.js">
 	</script>
+
+    <style>
+        .button {
+            background-color: #ffffff; /* Green */
+            border: none;
+            color: grey;
+            padding: 15px 32px;
+            text-align: left;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 90%;
+        }
+        .flag {
+            background-color: #ffffff; /* Green */
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 8%;   
+        }
+    </style>
 </head>
 
 <body>
@@ -108,6 +138,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
             </p>
             <div class="list-group">
                 <?php
+
                 	// Creates a query to select all items from resources
                     $query = "select * from resources;";
                     // Runs the query from above
@@ -121,12 +152,38 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                     {
                         if($row['topic_id'] == $topicResult[0])
                         {
-                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' class='list-group-item'>".$row[1]."</a>";
-                        }
+                           echo "
+                            <a href='visitCounter.php/?elemid=".$row[0]."' 
+                            target='_blank' class='button'>".$row[1]."</a>
+                            <button type='button'
+                                class='flag pull-right'
+                                onclick='myFunc(this)'
+                                name='".$row[1]."'
+                                id='flag'>
+                                    <img src='../IMG/clearFlag.ico' 
+                                    alt='HTML5 Icon'
+                                    style='width:20px;height:20px;'
+                                    id='flag'
+                                    name='hyperlink'>
+                            </button><br>
+                            ";
+/*                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' class='list-group-item'>".$row[1]."</a>";*/ 
+                       }
                     }
                     // Closes the variable connect
                     mysqli_close($connect);
                 ?>
+                <button type='button'
+                        class='pull-right'
+                        onclick='myFunc(this)'
+                        name='".$row[2]."'
+                        style='border: 0; background: transparent'>
+                            <img src='../IMG/redFlag.ico'
+                                alt='HTML5 Icon'
+                                style='width:20px;height:20px;'
+                                id='flag'
+                                name='hyperlink'>
+                </button>
             </div>
         </div>
     </div>

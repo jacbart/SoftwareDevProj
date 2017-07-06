@@ -7,10 +7,19 @@ $(document).ready(function(){ //this is breaking the code and IDK why =(
             window.location.href ="login.html";
         }
         else{
-            window.location.href="logout.php"
+            window.location.href="logout.php";
         }
     };
 });
+
+function myFunc(elem){
+    var elemId = $(this).attr('name');
+    var nextPage = 'flagCounter.php';
+    console.log('ding');
+    $.post(nextPage,elemId,function(response){
+        document.getElementById("flag").innerHTML = "dicks"
+    });
+}
 
 //magic code pulled from https://www.w3schools.com/js/js_cookies.asp
 function getCookie(cname){ 
