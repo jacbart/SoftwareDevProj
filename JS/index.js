@@ -25,6 +25,16 @@ function myFunc(elem){
         Thank you for your support and we\'ll fix it soon as we can`)
 }
 
+function myFunc2(elem,num){
+    console.log(elem.id);
+    // document.getElementById(elem.id).hide;
+    document.getElementById(elem.id).innerHTML = `
+        <img src='/IMG/favorited.png' 
+            alt='Favorited'
+            style='width:20px;height:20px;'>
+    `;
+}
+
 //magic code pulled from https://www.w3schools.com/js/js_cookies.asp
 function getCookie(cname){ 
     var name = cname + "=";

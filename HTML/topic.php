@@ -10,7 +10,8 @@ $db = substr($url["path"], 1);
 
 // Connects to MySQL Database on Heroku
 // $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
-$connect = mysqli_connect($server,$username,$password,$db);
+$connect = mysqli_connect("localhost", "root", "passtheword", "heroku_418f9cc765f4922");
+//$connect = mysqli_connect($server,$username,$password,$db);
 if(!$connect)
 {
 	die(mysqli_error($connect).'because'.mysqli_errno($connect));
@@ -103,9 +104,22 @@ while ($topicRow = mysqli_fetch_array($topicResult))
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
-            width: 90%;
+            width: 83%;
         }
         .flag {
+            background-color: #ffffff; /* Green */
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 8%;   
+        }
+        .fav {
             background-color: #ffffff; /* Green */
             border: none;
             color: black;
@@ -160,9 +174,17 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                                 onclick='myFunc(this)'
                                 id='".$row[0]."'>
                                     <img src='../IMG/clearFlag.ico' 
-                                    alt='HTML5 Icon'
+                                    alt='HTML5 Icon' 
                                     style='width:20px;height:20px;'>
                             </button>
+							<button type='button' 
+								class='fav pull-right' 
+								onclick='myFunc2(this, ".$row[0]."'
+								id='fav".$row[0]."'>
+									<img src='/IMG/addToFavorites.png'
+									alt='Add to favorites'
+									style='width:20px;height:20px;'>
+							</button>
                             ";
                        }
                     }
