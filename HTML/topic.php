@@ -175,11 +175,13 @@ while ($topicRow = mysqli_fetch_array($topicResult))
 							";
 							if (in_array($row['id'], $favs)) {
 								echo "
-								<img src='/IMG/favorited.png'
-									 class='fav pull-right'
-									 id='fav".$row[0]."'
-									 alt='Favorited'
-									 style='width:20px:height:20px;'>
+								<button type='button' 
+									class='fav pull-right' 
+									id='fav".$row[0]."'>
+										<img src='/IMG/favorited.png'
+										alt='Favorited'
+										style='width:20px;height:20px;'>
+								</button>
 								";
 							}
 							else {
