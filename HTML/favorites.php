@@ -138,7 +138,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                     }
 					$favs = explode(',', $favresult);
                     // Selects the rows the have the matching topic id of topicResults[0] and displays them
-                    while ($row = mysqli_fetch_array($result))
+                    while ($row = mysqli_fetch_array($resresult))
                     {
                         if(in_array($row['topic_id'], $favs))
                         {
