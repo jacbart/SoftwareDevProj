@@ -161,7 +161,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                                 id='".$row[0]."'>
                                     <img src='../IMG/clearFlag.ico' 
                                     alt='HTML5 Icon'
-                                    style='width:40px;height:40px;'>
+                                    style='width:20px;height:20px;'>
                             </button>
                             ";
                        }
