@@ -173,7 +173,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                                     style='width:20px;height:20px;'>
 							</button>
 							";
-							if (in_array($row['id'], $favs) && strlen(''.$_COOKIE['ThatCSGuide'].'') {
+							if (in_array($row['id'], $favs)) {
 								echo "
 								<button type='button' 
 									class='fav pull-right' 
