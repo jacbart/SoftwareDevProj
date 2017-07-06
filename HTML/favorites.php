@@ -126,18 +126,21 @@ while ($topicRow = mysqli_fetch_array($topicResult))
             <div class="list-group">
                 <?php
 
-                	// Creates a query to select all items from resources
-                    $query = "select * from resources;";
+                	// Creates a query to do stuff
+                    $favquery = "select fav from users where name='".$_COOKIE['ThatCSGuide']."';";
+					$resquery = "select * from resources;";
                     // Runs the query from above
-                    $result = mysqli_query($connect, $query);
-                    if(!$result)
+                    $favresult = mysqli_query($connect, $favquery);
+                    $resresult = mysqli_query($connect, $resquery);
+                    if(!$favresult)
                     {
                         die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
+					$favs = explode(',', $favresult);
                     // Selects the rows the have the matching topic id of topicResults[0] and displays them
                     while ($row = mysqli_fetch_array($result))
                     {
-                        if($row['topic_id'] == $topicResult[0])
+                        if(in_array($row['topic_id'], $favs))
                         {
                            echo "
                             <a href='visitCounter.php/?elemid=".$row[0]."' 
