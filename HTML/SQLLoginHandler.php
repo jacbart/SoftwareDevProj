@@ -31,7 +31,7 @@ $db = substr($url["path"], 1);
 
 // Connects to your Database 
 $connection = mysqli_connect($server,$username,$password,$db);
-// $connection = mysqli_connect("localhost","root","Badbugga1!", "ThatCSGuide");
+// $connection = mysqli_connect("localhost","root","pass", "ThatCSGuide");
 if (!$connection) {
     echo "<h4>Failed to connect to MySQL: ".mysqli_connect_error();
     die();

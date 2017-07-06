@@ -12,17 +12,20 @@ $(document).ready(function(){
     };
 });
 
+
 function myFunc(elem){
     var nextPage = 'flagCounter.php';
+    var data = {'elemid':elem.id};
     console.log(elem.id);
-    // document.getElementById(elem.id).hide;
+    $.post(nextPage,data, function(response){
+        console.log('worked'); //here to check if it worked
+    });
     document.getElementById(elem.id).innerHTML = `
         <img src='../IMG/redFlag.ico' 
             alt='HTML5 Icon'
             style='width:20px;height:20px;'>
     `;
-    alert( `We have registered that this is a bad link. \
-        Thank you for your support and we\'ll fix it soon as we can`)
+    alert( `We have registered that this is a bad link. Thank you for your support and we\'ll fix it soon as we can`)
 }
 
 function myFunc2(elem,num){
