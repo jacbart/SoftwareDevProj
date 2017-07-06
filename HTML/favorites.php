@@ -137,12 +137,15 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                         die('Could query data: '.mysqli_error($connect).' because '.mysqli_errno($connect));
                     }
 					$favs = explode(',', $favresult);
+					foreach ($favs as &$val) {
+						$val = (int)$val;
+					}
                     // Selects the rows the have the matching topic id of topicResults[0] and displays them
                     while ($row = mysqli_fetch_array($resresult))
                     {
-                        if(in_array($row['topic_id'], $favs))
+                        if(in_array($row['id'], $favs))
                         {
-                           echo "
+							echo "
                             <a href='visitCounter.php/?elemid=".$row[0]."' 
                             target='_blank' class='button'>".$row[1]."</a>
                             <button type='button'
@@ -150,7 +153,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                                 onclick='myFunc(this)'
                                 id='".$row[0]."'>
                                     <img src='../IMG/clearFlag.ico' 
-                                    alt='HTML5 Icon'
+                                    alt='HTML5 Icon' 
                                     style='width:20px;height:20px;'>
                             </button>
                             ";
