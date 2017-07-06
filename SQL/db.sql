@@ -46,7 +46,12 @@ insert into `resources` (`id`, `title`, `resource`, `visit`, `flag`, `topic_id`)
 	(9, 'Bash Scripting', 'http://www.asfa.k12.al.us/ourpages/auto/2016/8/10/55689107/reference_bash-cheat.pdf', 0, 0, 3),
 	(10, 'Bash Command Line', 'https://files.fosswire.com/2007/08/fwunixref.pdf', 0, 0, 3),
 	(11, 'PHP', 'http://www.digilife.be/quickreferences/qrc/php%20cheat%20sheet.pdf', 0, 0, 3),
-	(12, 'MySQL', 'http://cse.unl.edu/~sscott/ShowFiles/SQL/CheatSheet/SQLCheatSheet.html', 0, 0, 3);
+	(12, 'MySQL', 'http://cse.unl.edu/~sscott/ShowFiles/SQL/CheatSheet/SQLCheatSheet.html', 0, 0, 3),
+	(13, '73 tutorial videos on the basics of C++', 'https://www.youtube.com/playlist?list=PLAE85DE8440AA6B83', 0, 0, 2),
+	(14, 'Reddit\'s R/C++', 'https://www.reddit.com/r/cpp/', 0, 0, 2),
+	(15, 'Reddit\'s R/Python', 'https://www.reddit.com/r/Python/', 0, 0, 1),
+	(16, 'Beginners Guide to Python', 'https://wiki.python.org/moin/BeginnersGuide', 0, 0, 1),
+	(17, 'Beginners Guide to C++', 'https://www.howtoforge.com/beginners_guide_to_cplusplus', 0, 0, 2);
 	
 create table `garbage` (
 	`id` int(1) not null primary key
