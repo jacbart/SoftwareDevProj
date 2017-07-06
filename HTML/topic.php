@@ -171,7 +171,8 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                                     <img src='../IMG/clearFlag.ico' 
                                     alt='HTML5 Icon' 
                                     style='width:20px;height:20px;'>
-							</button>";
+							</button>
+							";
 							if (in_array($row['id'], $favs)) {
 								echo "
 								<img src='SRC'
