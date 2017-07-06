@@ -9,8 +9,8 @@ $password = $url["pass"];
 $db = substr($url["path"], 1);
 
 // Connects to MySQL Database on Heroku
-$connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
-// $connect = mysqli_connect($server,$username,$password,$db);
+// $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
+$connect = mysqli_connect($server,$username,$password,$db);
 if(!$connect)
 {
 	die(mysqli_error($connect).'because'.mysqli_errno($connect));
@@ -160,7 +160,8 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                                     name='hyperlink'>
                             </button><br>
                             ";
-/*                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' class='list-group-item'>".$row[1]."</a>";*/                        }
+/*                            echo "<a href='visitCounter.php/?elemid=".$row[0]."' target='_blank' class='list-group-item'>".$row[1]."</a>";*/ 
+                       }
                     }
                     // Closes the variable connect
                     mysqli_close($connect);
