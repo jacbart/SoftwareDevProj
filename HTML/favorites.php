@@ -131,7 +131,6 @@ while ($topicRow = mysqli_fetch_array($topicResult))
 					$resquery = "select * from resources;";
                     // Runs the query from above
                     $favresult = mysqli_query($connect, $favquery);
-					echo $favresult;
                     $resresult = mysqli_query($connect, $resquery);
                     if(!$favresult)
                     {
@@ -147,6 +146,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
                     while ($row = mysqli_fetch_array($resresult))
                     {
 						//echo $row[0]." ".$row['id']."<br>";
+						echo "test3<br>";
                         if(in_array($row['id'], $favs))
                         {
 							echo "
