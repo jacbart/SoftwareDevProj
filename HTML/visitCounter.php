@@ -1,20 +1,20 @@
 <?php
-	// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 	//heroku database things
 
 	$elemid = $_REQUEST['elemid'];
 
-	// $server = $url["host"];
-	// $username = $url["user"];
-	// $password = $url["pass"];
-	// $db = substr($url["path"], 1);
+	$server = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$db = substr($url["path"], 1);
 
 	// Connects to your Database 
 	//this should connect to heroku sql
 	
-    $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
-    // $connect = mysqli_connect($server,$username,$password,$db);
+    // $connect = mysqli_connect("localhost", "root", "Badbugga1!", "heroku_418f9cc765f4922");
+    $connect = mysqli_connect($server,$username,$password,$db);
     if(!$connect)
 	{
 		die(mysqli_error($connect).'because'.mysqli_errno($connect));
