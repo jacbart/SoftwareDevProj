@@ -1,6 +1,7 @@
 $(document).ready(function(){ //this is breaking the code and IDK why =(
     globalNavbar();
     loginButton();
+    console.log(getCookie('ThatCSGuide'));
     document.getElementById("loginButton").onclick = function(){ //when the button is pressed
         if (document.cookie.indexOf("ThatCSGuide") != 0){ //go to the login screen if no user cookie
             window.location.href ="login.html";
@@ -69,8 +70,8 @@ function globalNavbar(){
                     </div>
                 </div>
                 <button type="button" 
-                    class="btn btn-default pull-right" 
-                    aria-haspopup="true" 
+                    class="btn btn-default pull-right"
+                    aria-haspopup="true"
                     aria-expanded="false" 
                     id="loginButton">
                     Log In
