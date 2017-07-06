@@ -41,6 +41,13 @@ while ($topicRow = mysqli_fetch_array($topicResult))
 	<title>
 		That CS Guide
 	</title>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+  		(adsbygoogle = window.adsbygoogle || []).push({
+    		google_ad_client: "ca-pub-9145702947792999",
+    		enable_page_level_ads: true
+  		});
+</script>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible"
 		  content="IE=edge,chrome=IE7">

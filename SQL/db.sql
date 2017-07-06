@@ -35,14 +35,14 @@ create table `resources` (
 	`topic_id` int, foreign key (`topic_id`) references `topics`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=4;
 insert into `resources` (`id`, `title`, `resource`, `visit`, `flag`, `topic_id`) values
-	(1, 'ultimate python guide', 'https://www.google.com/search?q=pyhone&oq=pyhone&aqs=chrome..69i57j0l5.3420j0j7&sourceid=chrome&ie=UTF-8#q=python', 0, 0, 1),
-	(2, 'ultimate cpp guide', 'https://www.google.com/search?q=pyhone&oq=pyhone&aqs=chrome..69i57j0l5.3420j0j7&sourceid=chrome&ie=UTF-8#q=c%2B%2B', 0, 0, 2),
+	(1, 'Ultimate Python Guide', 'http://lmgtfy.com/?q=how+to+python%3F', 0, 0, 1),
+	(2, 'Ultimate C++ Guide', 'http://lmgtfy.com/?q=how+to+c%2B%2B%3F', 0, 0, 2),
 	(3, 'Ultimate Python CheatSheet', 'https://ehmatthes.github.io/pcc/cheatsheets/README.html', 0, 0, 3),
-	(4, 'google', 'https://support.google.com/websearch/answer/134479?hl=en', 0, 0, 3),
+	(4, 'How to Google', 'https://support.google.com/websearch/answer/134479?hl=en', 0, 0, 3),
 	(5, 'cplusplus.com tutorials', 'http://www.cplusplus.com/doc/tutorial/', 0, 0, 2),
 	(6, 'GDB', 'http://darkdust.net/files/GDB%20Cheat%20Sheet.pdf', 0, 0, 3),
 	(7, 'Valgrind', 'http://valgrind.org/docs/manual/quick-start.html', 0, 0, 3),
-	(8, 'vi/vim', 'http://www.glump.net/files/2012/08/vi-vim-cheat-sheet-and-tutorial.pdf', 0, 0, 3),
+	(8, 'Vi/Vim', 'http://www.glump.net/files/2012/08/vi-vim-cheat-sheet-and-tutorial.pdf', 0, 0, 3),
 	(9, 'Bash Scripting', 'http://www.asfa.k12.al.us/ourpages/auto/2016/8/10/55689107/reference_bash-cheat.pdf', 0, 0, 3),
 	(10, 'Bash Command Line', 'https://files.fosswire.com/2007/08/fwunixref.pdf', 0, 0, 3),
 	(11, 'PHP', 'http://www.digilife.be/quickreferences/qrc/php%20cheat%20sheet.pdf', 0, 0, 3),
