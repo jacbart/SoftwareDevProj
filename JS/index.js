@@ -73,6 +73,8 @@ function globalNavbar(){
                             <li><a href="topic.php?topicid=2">C++</a></li>
                             <li class="divider"></li>
                             <li><a href="topic.php?topicid=3">Cheat Sheets</a></li>
+                            <li class="divider"></li>
+                            <li><a href="favorites.php?topicid=4">Favorites</a></li>
                         </ul>
                     </div>
                 </div>

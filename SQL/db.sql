@@ -20,11 +20,12 @@ create table `topics` (
 	`id` int(1) not null AUTO_INCREMENT primary key,
 	`topic` varchar(15) not null default '',
 	`description` varchar(1000) not null default ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=5;
 insert into `topics` (`id`, `topic`, `description`) values
 	(1, 'Python', 'Python is a programming language that is loved by many in the computer science community. It processes code incredibly fast debuggin the programs are easy, seeing as bugs or poor inputs won\'t cause code to segmentation fault. Below are a few guides to help you get started with programming in python.'),
 	(2, 'C++', 'C++ is a general-purpose object-oriented programming (OOP) language, developed by Bjarne Stroustrup, and is an extension of the C language. It is therefore possible to code C++ in a "C style" or "object-oriented style."'),
-	(3, 'Cheat Sheets', 'Quick useful guides');
+	(3, 'Cheat Sheets', 'Quick useful guides'),
+	(4, 'Favorites', 'User\'s favorite links');
 
 create table `resources` (
 	`id` int(2) not null AUTO_INCREMENT primary key, 
@@ -33,7 +34,7 @@ create table `resources` (
 	`visit` int null default 0,
 	`flag` int null default 0,
 	`topic_id` int, foreign key (`topic_id`) references `topics`(`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=18;
 insert into `resources` (`id`, `title`, `resource`, `visit`, `flag`, `topic_id`) values
 	(1, 'Ultimate Python Guide', 'http://lmgtfy.com/?q=how+to+python%3F', 0, 0, 1),
 	(2, 'Ultimate C++ Guide', 'http://lmgtfy.com/?q=how+to+c%2B%2B%3F', 0, 0, 2),
