@@ -43,6 +43,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
 		That CS Guide
 	</title>
 	<meta charset="utf-8">
+
 	<meta http-equiv="X-UA-Compatible"
 		  content="IE=edge,chrome=IE7">
 
@@ -119,16 +120,9 @@ while ($topicRow = mysqli_fetch_array($topicResult))
         <div class="jumbotron col-md-8 col-md-offset-2">
             <h1>
                 <font color="#24478f">
-                	<!-- echos the topic's title -->
-                    <?php echo $topicResult[1]?>
+                	Favorites
                 </font>
             </h1>
-            <p>
-                <font color="#24478f">
-                	<!-- echos the topic's description -->
-                    <?php echo $topicResult[2]?>
-                </font>
-            </p>
             <div class="list-group">
                 <?php
 
