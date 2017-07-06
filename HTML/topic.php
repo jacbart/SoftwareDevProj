@@ -149,7 +149,7 @@ while ($topicRow = mysqli_fetch_array($topicResult))
 					$favquery = "select fav from users where name='".$_COOKIE['ThatCSGuide']."';";
                     // Runs the query from above
 					$result = mysqli_query($connect, $query);
-					$favresult = mysqli_query($connect, $query);
+					$favresult = mysqli_query($connect, $favquery);
 					$favs = explode(',', mysqli_fetch_row($favresult)[0]);
 
                     if(!$result)
