@@ -61,7 +61,7 @@ function globalNavbar(){
                     </div>
                 </div>
                 <button type="button" 
-                    class="btn btn-default"
+                    class="btn btn-default pull-right"
                     aria-haspopup="true"
                     aria-expanded="false" 
                     id="loginButton">
