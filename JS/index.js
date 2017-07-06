@@ -21,6 +21,8 @@ function myFunc(elem){
             alt='HTML5 Icon'
             style='width:20px;height:20px;'>
     `;
+    alert( `We have registered that this is a bad link. \
+        Thank you for your support and we\'ll fix it soon as we can`)
 }
 
 //magic code pulled from https://www.w3schools.com/js/js_cookies.asp
