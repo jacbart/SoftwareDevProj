@@ -25,7 +25,8 @@ insert into `topics` (`id`, `topic`, `description`) values
 	(1, 'Python', 'Python is a programming language that is loved by many in the computer science community. It processes code incredibly fast debuggin the programs are easy, seeing as bugs or poor inputs won\'t cause code to segmentation fault. Below are a few guides to help you get started with programming in python.'),
 	(2, 'C++', 'C++ is a general-purpose object-oriented programming (OOP) language, developed by Bjarne Stroustrup, and is an extension of the C language. It is therefore possible to code C++ in a "C style" or "object-oriented style."'),
 	(3, 'Cheat Sheets', 'Quick useful guides'),
-	(4, 'Favorites', 'User\'s favorite links');
+	(4, 'HTML', 'Hypertext Markup Language (HTML) is the standard markup language for creating web pages and web applications.'),
+	(5, 'Favorites', 'User\'s favorite links');
 
 create table `resources` (
 	`id` int(2) not null AUTO_INCREMENT primary key, 
@@ -52,7 +53,8 @@ insert into `resources` (`id`, `title`, `resource`, `visit`, `flag`, `topic_id`)
 	(14, 'Reddit\'s R/C++', 'https://www.reddit.com/r/cpp/', 0, 0, 2),
 	(15, 'Reddit\'s R/Python', 'https://www.reddit.com/r/Python/', 0, 0, 1),
 	(16, 'Beginners Guide to Python', 'https://wiki.python.org/moin/BeginnersGuide', 0, 0, 1),
-	(17, 'Beginners Guide to C++', 'https://www.howtoforge.com/beginners_guide_to_cplusplus', 0, 0, 2);
+	(17, 'Beginners Guide to C++', 'https://www.howtoforge.com/beginners_guide_to_cplusplus', 0, 0, 2),
+	(18, 'HTML Basics', 'https://www.w3schools.com/html/html_basic.asp', 0, 0, 4);
 	
 create table `garbage` (
 	`id` int(1) not null primary key
