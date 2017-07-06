@@ -91,7 +91,7 @@ function globalNavbar(){
                             <li class="divider"></li>
                             <li><a href="topic.php?topicid=3">Cheat Sheets</a></li>
                             <li class="divider"></li>
-                            <li><a href="topic.php?topicid=4">Cheat Sheets</a></li>
+                            <li><a href="topic.php?topicid=4">HTML</a></li>
                             <li class="divider"></li>
                             <li><a href="favorites.php?topicid=5">Favorites</a></li>
                         </ul>
