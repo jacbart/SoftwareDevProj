@@ -14,8 +14,7 @@ $(document).ready(function(){
 
 function myFunc(elem){
     var nextPage = 'flagCounter.php';
-    console.log('elem.id');
-    alert(elem.id);
+    console.log(elem.id);
     // document.getElementById(elem.id).hide;
     document.getElementById(elem.id).innerHTML = `
         <img src='../IMG/redFlag.ico' 
