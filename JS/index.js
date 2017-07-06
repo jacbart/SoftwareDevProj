@@ -1,4 +1,4 @@
-$(document).ready(function(){ //this is breaking the code and IDK why =(
+$(document).ready(function(){ 
     globalNavbar();
     loginButton();
     console.log(getCookie('ThatCSGuide'));
@@ -13,12 +13,15 @@ $(document).ready(function(){ //this is breaking the code and IDK why =(
 });
 
 function myFunc(elem){
-    var elemId = $(this).attr('name');
     var nextPage = 'flagCounter.php';
     console.log('ding');
-    $.post(nextPage,elemId,function(response){
-        document.getElementById("flag").innerHTML = "dicks"
-    });
+    alert(elem.id);
+    // document.getElementById(elem.id).hide;
+    document.getElementById(elem.id).innerHTML = `
+        <img src='../IMG/redFlag.ico' 
+            alt='HTML5 Icon'
+            style='width:20px;height:20px;'>
+    `;
 }
 
 //magic code pulled from https://www.w3schools.com/js/js_cookies.asp
